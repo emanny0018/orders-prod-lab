@@ -1,0 +1,7 @@
+target/
+*.log
+*.hprof
+*.jfr
+*.class
+node_modules/
+.DS_Store
