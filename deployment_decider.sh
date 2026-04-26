@@ -17,16 +17,10 @@ fi
 # ---- Scan only current Tomcat run ----
 START_LINE="$(grep -n "Starting service \[Catalina\]" "$LOG_FILE" | tail -1 | cut -d: -f1 || true)"
 
-# ---- Patterns ----
+# ---- Ignore noise ----
 IGNORE_PATTERNS=(
   "A context path must either be an empty string"
   "HeapDumpOnOutOfMemoryError"
-)
-
-CATALINA_SEVERE_PATTERNS=(
-  "SEVERE"
-  "ERROR"
-  "FATAL"
 )
 
 # ---- Helpers ----
@@ -65,6 +59,7 @@ CATALINA_SEVERE_ANOMALY=0
 PRIMARY_FAILURE=""
 DEV_ACTION=""
 EVIDENCE_LINE=""
+HEALTH_RESPONSE=""
 
 # ---- Scan logs for current-run dev/RCA evidence only ----
 scan_line() {
@@ -143,7 +138,11 @@ else
 fi
 
 # ---- HC decision: readiness endpoint only ----
-HTTP_CODE="$(curl -s -o /dev/null -w "%{http_code}" "$APP_URL" || true)"
+HEALTH_BODY="$(mktemp)"
+
+HTTP_CODE="$(curl -s -o "$HEALTH_BODY" -w "%{http_code}" "$APP_URL" || true)"
+HEALTH_RESPONSE="$(cat "$HEALTH_BODY" | tr '\n' ' ' | cut -c1-300)"
+rm -f "$HEALTH_BODY"
 
 if is_http_ready "$HTTP_CODE"; then
   HTTP_READINESS_FAILED=0
@@ -152,10 +151,22 @@ else
   HTTP_READINESS_FAILED=1
   ALARMS_PRESENT=1
 
-  if [[ -z "$PRIMARY_FAILURE" ]]; then
+  if [[ "$HEALTH_RESPONSE" == *"DATABASE_CONNECTIVITY_FAILED"* ]]; then
+    PRIMARY_FAILURE="DATABASE_CONNECTIVITY_FAILED"
+    DEV_ACTION="Check PostgreSQL service status, port 5432, pg_hba.conf, listen_addresses, and network path from Tomcat to DB."
+    EVIDENCE_LINE="$HEALTH_RESPONSE"
+  elif [[ "$HEALTH_RESPONSE" == *"DATABASE_AUTH_FAILED"* ]]; then
+    PRIMARY_FAILURE="DATABASE_AUTH_FAILED"
+    DEV_ACTION="Check DB username/password used by the app and verify orders_user credentials."
+    EVIDENCE_LINE="$HEALTH_RESPONSE"
+  elif [[ "$HEALTH_RESPONSE" == *"DATABASE_TIMEOUT"* ]]; then
+    PRIMARY_FAILURE="DATABASE_TIMEOUT"
+    DEV_ACTION="Check DB latency, locks, connection pool exhaustion, and network timeout."
+    EVIDENCE_LINE="$HEALTH_RESPONSE"
+  elif [[ -z "$PRIMARY_FAILURE" ]]; then
     PRIMARY_FAILURE="HTTP_READINESS_FAILED"
     DEV_ACTION="Check $APP_URL from the VM; then inspect Tomcat/app logs for why the health endpoint is not serving."
-    EVIDENCE_LINE="curl returned HTTP $HTTP_CODE for $APP_URL"
+    EVIDENCE_LINE="curl returned HTTP $HTTP_CODE for $APP_URL with body: $HEALTH_RESPONSE"
   fi
 fi
 
@@ -190,6 +201,7 @@ echo "LOG_FILE=$LOG_FILE"
 echo "SCAN_START_LINE=${START_LINE:-LAST_${TAIL_LINES}_LINES}"
 
 echo "HTTP_CODE=$HTTP_CODE"
+echo "HEALTH_RESPONSE=${HEALTH_RESPONSE:-NONE}"
 echo "HTTP_READINESS_FAILED=$HTTP_READINESS_FAILED"
 echo "ALARMS_PRESENT=$ALARMS_PRESENT"
 
