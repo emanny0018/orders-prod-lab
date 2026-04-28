@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ---- Config ----
 APP_URL="http://localhost:8080/orders/health"
 LOG_GLOB="/opt/tomcat/logs/catalina.*.log"
 TAIL_LINES=500
 
-# ---- Latest Catalina log ----
 LOG_FILE="$(ls -t $LOG_GLOB 2>/dev/null | head -1)"
 
 if [[ -z "${LOG_FILE:-}" ]]; then
@@ -14,16 +12,13 @@ if [[ -z "${LOG_FILE:-}" ]]; then
   exit 1
 fi
 
-# ---- Scan only current Tomcat run ----
 START_LINE="$(grep -n "Starting service \[Catalina\]" "$LOG_FILE" | tail -1 | cut -d: -f1 || true)"
 
-# ---- Ignore noise ----
 IGNORE_PATTERNS=(
   "A context path must either be an empty string"
   "HeapDumpOnOutOfMemoryError"
 )
 
-# ---- Helpers ----
 should_ignore() {
   local line="$1"
   for pattern in "${IGNORE_PATTERNS[@]}"; do
@@ -49,24 +44,55 @@ set_dev_hint_if_empty() {
   fi
 }
 
-# ---- Evidence flags ----
+set_java_exception_hint() {
+  local evidence="$1"
+
+  PRIMARY_FAILURE="JAVA_OR_TOMCAT_EXCEPTION"
+  DEV_ACTION="Check the captured Java/Tomcat exception line in Catalina logs. This is the best starting point for developer RCA."
+  EVIDENCE_LINE="$evidence"
+}
+
 DEPLOY_ERROR_EVIDENCE=0
 CONTEXT_STARTUP_EVIDENCE=0
 APP_EXCEPTION_ANOMALY=0
 JVM_MEMORY_ANOMALY=0
 CATALINA_SEVERE_ANOMALY=0
+JAVA_EXCEPTION_EVIDENCE=0
 
 PRIMARY_FAILURE=""
 DEV_ACTION=""
 EVIDENCE_LINE=""
 HEALTH_RESPONSE=""
 
-# ---- Scan logs for current-run dev/RCA evidence only ----
 scan_line() {
   local line="$1"
 
   [[ -z "$line" ]] && return 0
   should_ignore "$line" && return 0
+
+  if [[ "$line" == *"Caused by:"* || \
+        "$line" == *"java.lang."* || \
+        "$line" == *"java.sql."* || \
+        "$line" == *"jakarta.servlet."* || \
+        "$line" == *"org.apache.catalina.LifecycleException"* || \
+        "$line" == *"LifecycleException"* || \
+        "$line" == *"IllegalArgumentException"* || \
+        "$line" == *"IllegalStateException"* || \
+        "$line" == *"ClassNotFoundException"* || \
+        "$line" == *"NoClassDefFoundError"* || \
+        "$line" == *"NullPointerException"* || \
+        "$line" == *"SQLException"* || \
+        "$line" == *"PSQLException"* || \
+        "$line" == *"TimeoutException"* || \
+        "$line" == *"ConnectException"* || \
+        "$line" == *"SocketTimeoutException"* ]]; then
+
+    JAVA_EXCEPTION_EVIDENCE=1
+    APP_EXCEPTION_ANOMALY=1
+
+    # Prefer the deeper Java/Tomcat exception over generic deployment error.
+    set_java_exception_hint "$line"
+  fi
 
   if [[ "$line" == *"Parse error in application web.xml file"* || "$line" == *"Parse fatal error"* ]]; then
     DEPLOY_ERROR_EVIDENCE=1
@@ -78,43 +104,34 @@ scan_line() {
     DEPLOY_ERROR_EVIDENCE=1
     set_dev_hint_if_empty \
       "WAR_DEPLOYMENT_ERROR" \
-      "Check /opt/tomcat/webapps/orders.war and the extracted /opt/tomcat/webapps/orders directory." \
+      "Check /opt/tomcat/webapps/orders.war and the extracted /opt/tomcat/webapps/orders directory. Review the Java exception evidence line for the deeper cause." \
       "$line"
   fi
 
   if [[ "$line" == *"startup failed due to previous errors"* || \
         "$line" == *"Marking this application unavailable"* || \
-        "$line" == *"One or more components marked the context as not correctly configured"* ]]; then
+        "$line" == *"One or more components marked the context as not correctly configured"* || \
+        "$line" == *"Failed to start component"* || \
+        "$line" == *"Failed to start child"* ]]; then
+
     CONTEXT_STARTUP_EVIDENCE=1
     set_dev_hint_if_empty \
       "CONTEXT_STARTUP_FAILED" \
-      "Check why Tomcat marked the /orders context unavailable; review the Catalina lines before this message." \
-      "$line"
-  fi
-
-  if [[ "$line" == *"ClassNotFoundException"* || "$line" == *"NoClassDefFoundError"* ]]; then
-    APP_EXCEPTION_ANOMALY=1
-    set_dev_hint_if_empty \
-      "MISSING_CLASS_OR_DEPENDENCY" \
-      "Check application dependencies packaged inside orders.war, especially WEB-INF/lib and build configuration." \
-      "$line"
-  elif [[ "$line" == *"Caused by:"* ]]; then
-    APP_EXCEPTION_ANOMALY=1
-    set_dev_hint_if_empty \
-      "APPLICATION_EXCEPTION_CHAIN" \
-      "Check the Caused by chain in the app/Tomcat logs to find the deepest root cause." \
+      "Tomcat failed to start the /orders context. Check the captured exception evidence and Catalina lines immediately before this message." \
       "$line"
   fi
 
   if [[ "$line" == *"java.lang.OutOfMemoryError"* || \
+        "$line" == *"OutOfMemoryError"* || \
         "$line" == *"GC overhead limit exceeded"* || \
         "$line" == *"Java heap space"* || \
-        "$line" == *"OutOfMemoryError: Metaspace"* || \
-        "$line" == *"OutOfMemoryError: Direct buffer memory"* ]]; then
+        "$line" == *"Metaspace"* || \
+        "$line" == *"Direct buffer memory"* ]]; then
+
     JVM_MEMORY_ANOMALY=1
     set_dev_hint_if_empty \
       "JVM_MEMORY_PRESSURE_OR_OOM" \
-      "Check heap dump, GC logs, JVM flags, and memory-heavy application code path." \
+      "Check heap dump, GC logs, JFR recording, JVM flags, and memory-heavy application code path." \
       "$line"
   fi
 
@@ -137,10 +154,14 @@ else
   done < <(tail -n "$TAIL_LINES" "$LOG_FILE")
 fi
 
-# ---- HC decision: readiness endpoint only ----
 HEALTH_BODY="$(mktemp)"
-
-HTTP_CODE="$(curl -s -o "$HEALTH_BODY" -w "%{http_code}" "$APP_URL" || true)"
+CURL_EXIT=0
+HTTP_CODE="$(curl -m 5 -s -o "$HEALTH_BODY" -w "%{http_code}" "$APP_URL" || CURL_EXIT=$?)"
+if [[ "$CURL_EXIT" == "28" ]]; then
+  HEALTH_TIMEOUT=1
+else
+  HEALTH_TIMEOUT=0
+fi
 HEALTH_RESPONSE="$(cat "$HEALTH_BODY" | tr '\n' ' ' | cut -c1-300)"
 rm -f "$HEALTH_BODY"
 
@@ -170,14 +191,12 @@ else
   fi
 fi
 
-# ---- Anomalies present ----
-if (( DEPLOY_ERROR_EVIDENCE || CONTEXT_STARTUP_EVIDENCE || APP_EXCEPTION_ANOMALY || JVM_MEMORY_ANOMALY || CATALINA_SEVERE_ANOMALY )); then
+if (( DEPLOY_ERROR_EVIDENCE || CONTEXT_STARTUP_EVIDENCE || APP_EXCEPTION_ANOMALY || JVM_MEMORY_ANOMALY || CATALINA_SEVERE_ANOMALY || JAVA_EXCEPTION_EVIDENCE )); then
   ANOMALIES_PRESENT=1
 else
   ANOMALIES_PRESENT=0
 fi
 
-# ---- Final decision ----
 if (( ALARMS_PRESENT )); then
   FINAL_RESULT="ALARM_KEEP_HC_DISABLED"
 elif (( ANOMALIES_PRESENT )); then
@@ -186,7 +205,6 @@ else
   FINAL_RESULT="READINESS_CONFIRMED"
 fi
 
-# ---- Summary ----
 if (( HTTP_READINESS_FAILED )); then
   SUMMARY="Health endpoint failed with HTTP $HTTP_CODE"
 elif (( ANOMALIES_PRESENT )); then
@@ -195,18 +213,19 @@ else
   SUMMARY="Health endpoint passed cleanly"
 fi
 
-# ---- Output ----
 echo "APP_URL=$APP_URL"
 echo "LOG_FILE=$LOG_FILE"
 echo "SCAN_START_LINE=${START_LINE:-LAST_${TAIL_LINES}_LINES}"
 
 echo "HTTP_CODE=$HTTP_CODE"
+echo "HEALTH_TIMEOUT=${HEALTH_TIMEOUT:-0}"
 echo "HEALTH_RESPONSE=${HEALTH_RESPONSE:-NONE}"
 echo "HTTP_READINESS_FAILED=$HTTP_READINESS_FAILED"
 echo "ALARMS_PRESENT=$ALARMS_PRESENT"
 
 echo "DEPLOY_ERROR_EVIDENCE=$DEPLOY_ERROR_EVIDENCE"
 echo "CONTEXT_STARTUP_EVIDENCE=$CONTEXT_STARTUP_EVIDENCE"
+echo "JAVA_EXCEPTION_EVIDENCE=$JAVA_EXCEPTION_EVIDENCE"
 echo "APP_EXCEPTION_ANOMALY=$APP_EXCEPTION_ANOMALY"
 echo "JVM_MEMORY_ANOMALY=$JVM_MEMORY_ANOMALY"
 echo "CATALINA_SEVERE_ANOMALY=$CATALINA_SEVERE_ANOMALY"
