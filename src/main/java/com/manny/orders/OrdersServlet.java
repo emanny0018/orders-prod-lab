@@ -2,11 +2,50 @@ package com.manny.orders;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import redis.clients.jedis.Jedis;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.*;
 
 @WebServlet("/orders")
 public class OrdersServlet extends HttpServlet {
+
+    private DashboardSummary getDashboardSummary(Connection conn) throws Exception {
+        String cacheKey = "orders:dashboard:summary";
+
+        try (Jedis jedis = Cache.getClient()) {
+            String cached = jedis.get(cacheKey);
+            if (cached != null) {
+                return DashboardSummary.fromCacheValue(cached);
+            }
+        } catch (Exception ignored) {}
+
+        try (PreparedStatement summary = conn.prepareStatement(
+                "SELECT COUNT(*) total_orders, " +
+                "SUM(CASE WHEN status='PAID' THEN 1 ELSE 0 END) paid_orders, " +
+                "SUM(CASE WHEN status='PENDING' THEN 1 ELSE 0 END) pending_orders, " +
+                "SUM(CASE WHEN status='FAILED' THEN 1 ELSE 0 END) failed_orders, " +
+                "COALESCE(SUM(price * quantity),0) revenue FROM orders")) {
+
+            ResultSet sr = summary.executeQuery();
+            sr.next();
+
+            DashboardSummary result = new DashboardSummary(
+                    sr.getInt("total_orders"),
+                    sr.getInt("paid_orders"),
+                    sr.getInt("pending_orders"),
+                    sr.getInt("failed_orders"),
+                    sr.getBigDecimal("revenue").toString()
+            );
+
+            try (Jedis jedis = Cache.getClient()) {
+                jedis.setex(cacheKey, 30, result.toCacheValue());
+            } catch (Exception ignored) {}
+
+            return result;
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -19,97 +58,105 @@ public class OrdersServlet extends HttpServlet {
 
         String user = session.getAttribute("user").toString();
         resp.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = resp.getWriter();
 
-        try (Connection conn = Db.getConnection();
-             PreparedStatement summary = conn.prepareStatement(
-                 "SELECT COUNT(*) total_orders, " +
-                 "SUM(CASE WHEN status='PAID' THEN 1 ELSE 0 END) paid_orders, " +
-                 "SUM(CASE WHEN status='PENDING' THEN 1 ELSE 0 END) pending_orders, " +
-                 "SUM(CASE WHEN status='FAILED' THEN 1 ELSE 0 END) failed_orders, " +
-                 "COALESCE(SUM(price * quantity),0) revenue FROM orders");
-             PreparedStatement ps = conn.prepareStatement(
-                 "SELECT id, customer_name, item_name, quantity, price, status, created_at " +
-                 "FROM orders ORDER BY id DESC LIMIT 50")) {
+        try (Connection conn = Db.getConnection()) {
 
-            ResultSet sr = summary.executeQuery();
-            sr.next();
+            DashboardSummary dash = getDashboardSummary(conn);
 
-            ResultSet rs = ps.executeQuery();
+            Ui.pageStart(out,
+                    "Orders Command Center",
+                    "Create customer purchases, track payment state, and publish fulfillment events.",
+                    user);
 
-            resp.getWriter().println("""
-<!DOCTYPE html>
-<html>
-<head>
-<title>Manny Orders Platform</title>
-<style>
-body { margin:0; font-family:Arial,sans-serif; background:#f3f4f6; color:#111827; }
-.sidebar { position:fixed; top:0; left:0; width:230px; height:100vh; background:#111827; color:white; padding:25px 18px; }
-.sidebar h2 { margin-top:0; }
-.sidebar a { display:block; color:#d1d5db; text-decoration:none; padding:12px 8px; border-radius:8px; margin:6px 0; }
-.sidebar a:hover { background:#1f2937; color:white; }
-.main { margin-left:270px; padding:30px; }
-.topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; }
-.card-row { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:25px; }
-.card { background:white; padding:22px; border-radius:14px; box-shadow:0 4px 14px rgba(0,0,0,.08); }
-.card h3 { margin:0; color:#6b7280; font-size:14px; }
-.card .value { font-size:30px; font-weight:bold; margin-top:8px; }
-.table-card { background:white; padding:22px; border-radius:14px; box-shadow:0 4px 14px rgba(0,0,0,.08); }
-table { border-collapse:collapse; width:100%; }
-th { background:#1f6feb; color:white; text-align:left; padding:12px; }
-td { padding:12px; border-bottom:1px solid #e5e7eb; }
-tr:hover { background:#f9fafb; }
-.badge { padding:5px 10px; border-radius:999px; font-size:12px; font-weight:bold; }
-.PAID { background:#dcfce7; color:#166534; }
-.PENDING { background:#fef9c3; color:#854d0e; }
-.FAILED { background:#fee2e2; color:#991b1b; }
-.logout { color:#1f6feb; text-decoration:none; font-weight:bold; }
-</style>
-</head>
-<body>
-<div class="sidebar">
-  <h2>Manny Platform</h2>
-  <a href="orders">Orders Dashboard</a>
-  <a href="health">Service Health</a>
-  <a href="#">Inventory</a>
-  <a href="#">Payments</a>
-  <a href="#">Reports</a>
-  <a href="logout">Logout</a>
-</div>
-<div class="main">
-""");
+            out.println("<div class='card-row'>");
+            out.println("<div class='card'><h3>Total Orders</h3><div class='value'>" + dash.totalOrders + "</div></div>");
+            out.println("<div class='card'><h3>Paid Orders</h3><div class='value'>" + dash.paidOrders + "</div></div>");
+            out.println("<div class='card'><h3>Pending Orders</h3><div class='value'>" + dash.pendingOrders + "</div></div>");
+            out.println("<div class='card'><h3>Revenue</h3><div class='value'>$" + dash.revenue + "</div></div>");
+            out.println("</div>");
 
-            resp.getWriter().println("<div class='topbar'><div><h1>Orders Dashboard</h1><p>Welcome, <b>" + user + "</b>. Live data from PostgreSQL.</p></div><a class='logout' href='logout'>Logout</a></div>");
+            out.println("<div class='table-card'><h2>Create Customer Purchase</h2>");
+            out.println("<form action='create-order' method='post' style='display:grid;grid-template-columns:2fr 3fr 1fr 1fr auto;gap:12px;align-items:end;'>");
 
-            resp.getWriter().println("<div class='card-row'>");
-            resp.getWriter().println("<div class='card'><h3>Total Orders</h3><div class='value'>" + sr.getInt("total_orders") + "</div></div>");
-            resp.getWriter().println("<div class='card'><h3>Paid Orders</h3><div class='value'>" + sr.getInt("paid_orders") + "</div></div>");
-            resp.getWriter().println("<div class='card'><h3>Pending Orders</h3><div class='value'>" + sr.getInt("pending_orders") + "</div></div>");
-            resp.getWriter().println("<div class='card'><h3>Revenue</h3><div class='value'>$" + sr.getBigDecimal("revenue") + "</div></div>");
-            resp.getWriter().println("</div>");
+            out.println("<div><label>Customer</label><input name='customer' required placeholder='Customer name' style='width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;'></div>");
 
-            resp.getWriter().println("<div class='table-card'><h2>Recent Orders</h2>");
-            resp.getWriter().println("<table>");
-            resp.getWriter().println("<tr><th>ID</th><th>Customer</th><th>Item</th><th>Qty</th><th>Price</th><th>Status</th><th>Created</th></tr>");
+            out.println("<div><label>Product</label><select id='skuSelect' name='sku' required onchange='updatePrice()' style='width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;'>");
+            out.println("<option value='' data-price='0'>Select product</option>");
 
-            while (rs.next()) {
-                String status = rs.getString("status");
-                resp.getWriter().println("<tr>");
-                resp.getWriter().println("<td>#" + rs.getInt("id") + "</td>");
-                resp.getWriter().println("<td>" + rs.getString("customer_name") + "</td>");
-                resp.getWriter().println("<td>" + rs.getString("item_name") + "</td>");
-                resp.getWriter().println("<td>" + rs.getInt("quantity") + "</td>");
-                resp.getWriter().println("<td>$" + rs.getBigDecimal("price") + "</td>");
-                resp.getWriter().println("<td><span class='badge " + status + "'>" + status + "</span></td>");
-                resp.getWriter().println("<td>" + rs.getTimestamp("created_at") + "</td>");
-                resp.getWriter().println("</tr>");
+            try (PreparedStatement ps = conn.prepareStatement(
+                    "SELECT sku, item_name, category, stock_quantity, unit_price FROM inventory ORDER BY category, item_name");
+                 ResultSet products = ps.executeQuery()) {
+
+                while (products.next()) {
+                    String sku = products.getString("sku");
+                    String itemName = products.getString("item_name");
+                    String category = products.getString("category");
+                    int stock = products.getInt("stock_quantity");
+                    String price = products.getBigDecimal("unit_price").toString();
+
+                    String label = category + " - " + itemName + " (" + sku + ") | Stock: " + stock + " | $" + price;
+
+                    if (stock <= 0) {
+                        out.println("<option disabled value='" + sku + "' data-price='" + price + "'>" + label + " OUT OF STOCK</option>");
+                    } else {
+                        out.println("<option value='" + sku + "' data-price='" + price + "'>" + label + "</option>");
+                    }
+                }
             }
 
-            resp.getWriter().println("</table></div></div></body></html>");
+            out.println("</select></div>");
+
+            out.println("<div><label>Qty</label><input id='qtyInput' name='qty' type='number' min='1' value='1' required oninput='updatePrice()' style='width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;'></div>");
+            out.println("<div><label>Total</label><input id='totalPrice' readonly value='$0.00' style='width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;background:#f8fafc;font-weight:bold;'></div>");
+            out.println("<button type='submit' style='padding:13px 18px;border:0;border-radius:10px;background:#2563eb;color:white;font-weight:800;'>Create</button>");
+
+            out.println("</form>");
+            out.println("""
+<script>
+function updatePrice() {
+  const select = document.getElementById('skuSelect');
+  const qty = parseInt(document.getElementById('qtyInput').value || '1');
+  const price = parseFloat(select.options[select.selectedIndex]?.dataset.price || '0');
+  document.getElementById('totalPrice').value = '$' + (price * qty).toFixed(2);
+}
+</script>
+""");
+            out.println("</div>");
+
+            out.println("<div class='table-card'><h2>Recent Customer Orders</h2>");
+            out.println("<table>");
+            out.println("<tr><th>ID</th><th>Customer</th><th>SKU</th><th>Qty</th><th>Unit Price</th><th>Total</th><th>Status</th><th>Created</th></tr>");
+
+            try (PreparedStatement ps = conn.prepareStatement(
+                    "SELECT id, customer_name, item_name, quantity, price, (quantity * price) total, status, created_at " +
+                    "FROM orders ORDER BY id DESC LIMIT 75");
+                 ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    String status = rs.getString("status");
+                    String color = status.equals("PAID") ? "green" : status.equals("PENDING") ? "yellow" : "red";
+
+                    out.println("<tr>");
+                    out.println("<td><a href='order?id=" + rs.getInt("id") + "'>#" + rs.getInt("id") + "</a></td>");
+                    out.println("<td>" + rs.getString("customer_name") + "</td>");
+                    out.println("<td>" + rs.getString("item_name") + "</td>");
+                    out.println("<td>" + rs.getInt("quantity") + "</td>");
+                    out.println("<td>$" + rs.getBigDecimal("price") + "</td>");
+                    out.println("<td>$" + rs.getBigDecimal("total") + "</td>");
+                    out.println("<td>" + Ui.badge(status, color) + "</td>");
+                    out.println("<td>" + rs.getTimestamp("created_at") + "</td>");
+                    out.println("</tr>");
+                }
+            }
+
+            out.println("</table></div>");
+            Ui.footer(out);
 
         } catch (Exception e) {
             resp.setStatus(500);
-            resp.getWriter().println("<h1>Orders Service Error</h1>");
-            resp.getWriter().println("<pre>" + e.getMessage() + "</pre>");
+            out.println("<h1>Orders Service Error</h1>");
+            out.println("<pre>" + e.getMessage() + "</pre>");
         }
     }
 }
