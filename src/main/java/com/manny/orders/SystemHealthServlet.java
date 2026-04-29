@@ -31,7 +31,7 @@ public class SystemHealthServlet extends HttpServlet {
 
     private String checkRabbit() {
         try {
-            QueuePublisher.publishOrderEvent("{\"test\":\"ping\"}");
+            QueuePublisher.testConnection();
             return Ui.badge("UP", "green");
         } catch (Exception e) {
             return Ui.badge("DOWN", "red");

@@ -216,6 +216,7 @@ a { color:#2563eb; font-weight:800; text-decoration:none; }
 
   <div class="nav-section">Business Services</div>
   <a href="orders">Orders Command Center</a>
+  <a href="cart">Shopping Cart</a>
   <a href="inventory">Inventory Control</a>
   <a href="payments">Payments & Settlements</a>
   <a href="reports">Reports & Analytics</a>

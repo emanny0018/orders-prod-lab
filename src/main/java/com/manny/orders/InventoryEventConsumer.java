@@ -61,7 +61,14 @@ public class InventoryEventConsumer {
 
             } catch (Exception e) {
                 System.err.println("CONSUMER_PROCESSING_FAILED body=" + body + " error=" + e.getMessage());
-                channel.basicNack(delivery.getEnvelope().getDeliveryTag(), false, true);
+
+                // Invalid event contract should not retry forever.
+                // Drop it after logging. Later we can route this to a DLQ.
+                if (body.contains("\"test\"") || e.getMessage().contains("not found")) {
+                    channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+                } else {
+                    channel.basicNack(delivery.getEnvelope().getDeliveryTag(), false, true);
+                }
             }
         };
 

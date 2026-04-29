@@ -124,6 +124,38 @@ function updatePrice() {
 """);
             out.println("</div>");
 
+            
+            out.println("<div class='table-card'><h2>Add Product to Shopping Cart</h2>");
+            out.println("<form action='cart/add' method='post' style='display:grid;grid-template-columns:3fr 1fr auto;gap:12px;align-items:end;'>");
+            out.println("<div><label>Product</label><select name='sku' required style='width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;'>");
+
+            try (PreparedStatement ps = conn.prepareStatement(
+                    "SELECT sku, item_name, category, stock_quantity, unit_price FROM inventory ORDER BY category, item_name");
+                 ResultSet products = ps.executeQuery()) {
+
+                while (products.next()) {
+                    String sku = products.getString("sku");
+                    String itemName = products.getString("item_name");
+                    String category = products.getString("category");
+                    int stock = products.getInt("stock_quantity");
+                    String price = products.getBigDecimal("unit_price").toString();
+
+                    String label = category + " - " + itemName + " (" + sku + ") | Stock: " + stock + " | $" + price;
+
+                    if (stock <= 0) {
+                        out.println("<option disabled value='" + sku + "'>" + label + " OUT OF STOCK</option>");
+                    } else {
+                        out.println("<option value='" + sku + "'>" + label + "</option>");
+                    }
+                }
+            }
+
+            out.println("</select></div>");
+            out.println("<div><label>Qty</label><input name='qty' type='number' min='1' value='1' required style='width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;'></div>");
+            out.println("<button type='submit' style='padding:13px 18px;border:0;border-radius:10px;background:#7c3aed;color:white;font-weight:800;'>Add to Cart</button>");
+            out.println("</form>");
+            out.println("</div>");
+
             out.println("<div class='table-card'><h2>Recent Customer Orders</h2>");
             out.println("<table>");
             out.println("<tr><th>ID</th><th>Customer</th><th>SKU</th><th>Qty</th><th>Unit Price</th><th>Total</th><th>Status</th><th>Created</th></tr>");
