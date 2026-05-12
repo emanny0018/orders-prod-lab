@@ -1,0 +1,1001 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1777566831010,93,Login,302,,Session Users 1-1,,true,,191,241,1,1,http://localhost:8080/orders/login,81,0,24
+1777566831109,59,Add iPhone To Cart,302,,Session Users 1-1,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,59,0,1
+1777566831169,54,Add MacBook To Cart,302,,Session Users 1-1,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,54,0,5
+1777566831224,6,View Cart,200,,Session Users 1-1,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,6,0,2
+1777566831232,46,Login,302,,Session Users 1-1,,true,,110,294,1,1,http://localhost:8080/orders/login,46,0,1
+1777566831280,42,Add iPhone To Cart,302,,Session Users 1-1,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,42,0,2
+1777566831324,47,Add MacBook To Cart,302,,Session Users 1-1,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,47,0,2
+1777566831372,3,View Cart,200,,Session Users 1-1,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566831377,41,Login,302,,Session Users 1-1,,true,,110,294,1,1,http://localhost:8080/orders/login,41,0,0
+1777566831419,42,Add iPhone To Cart,302,,Session Users 1-1,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,42,0,2
+1777566831462,41,Add MacBook To Cart,302,,Session Users 1-1,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,41,0,1
+1777566831503,9,View Cart,200,,Session Users 1-1,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,9,0,3
+1777566831515,54,Login,302,,Session Users 1-1,,true,,110,294,1,1,http://localhost:8080/orders/login,54,0,1
+1777566831572,46,Add iPhone To Cart,302,,Session Users 1-1,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,46,0,1
+1777566831618,47,Add MacBook To Cart,302,,Session Users 1-1,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,47,0,1
+1777566831666,6,View Cart,200,,Session Users 1-1,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,5,0,2
+1777566831674,45,Login,302,,Session Users 1-1,,true,,110,294,1,1,http://localhost:8080/orders/login,45,0,1
+1777566831720,46,Add iPhone To Cart,302,,Session Users 1-1,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,46,0,1
+1777566831766,36,Add MacBook To Cart,302,,Session Users 1-1,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,36,0,1
+1777566831803,6,View Cart,200,,Session Users 1-1,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,5,0,2
+1777566832058,33,Login,302,,Session Users 1-2,,true,,191,241,1,1,http://localhost:8080/orders/login,33,0,1
+1777566832092,37,Add iPhone To Cart,302,,Session Users 1-2,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,37,0,3
+1777566832130,44,Add MacBook To Cart,302,,Session Users 1-2,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,44,0,0
+1777566832175,6,View Cart,200,,Session Users 1-2,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,6,0,0
+1777566832182,43,Login,302,,Session Users 1-2,,true,,110,294,1,1,http://localhost:8080/orders/login,43,0,7
+1777566832226,39,Add iPhone To Cart,302,,Session Users 1-2,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,39,0,2
+1777566832265,37,Add MacBook To Cart,302,,Session Users 1-2,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,37,0,3
+1777566832303,4,View Cart,200,,Session Users 1-2,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,0
+1777566832307,47,Login,302,,Session Users 1-2,,true,,110,294,1,1,http://localhost:8080/orders/login,47,0,2
+1777566832354,29,Add iPhone To Cart,302,,Session Users 1-2,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,29,0,2
+1777566832384,39,Add MacBook To Cart,302,,Session Users 1-2,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,39,0,2
+1777566832425,7,View Cart,200,,Session Users 1-2,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,6,0,3
+1777566832433,38,Login,302,,Session Users 1-2,,true,,110,294,1,1,http://localhost:8080/orders/login,38,0,1
+1777566832472,35,Add iPhone To Cart,302,,Session Users 1-2,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,35,0,2
+1777566832507,36,Add MacBook To Cart,302,,Session Users 1-2,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,36,0,1
+1777566832545,7,View Cart,200,,Session Users 1-2,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,7,0,4
+1777566832553,29,Login,302,,Session Users 1-2,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,0
+1777566832583,38,Add iPhone To Cart,302,,Session Users 1-2,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,38,0,0
+1777566832622,43,Add MacBook To Cart,302,,Session Users 1-2,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,43,0,1
+1777566832666,3,View Cart,200,,Session Users 1-2,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566833258,47,Login,302,,Session Users 1-3,,true,,191,241,1,1,http://localhost:8080/orders/login,47,0,0
+1777566833305,44,Add iPhone To Cart,302,,Session Users 1-3,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,44,0,3
+1777566833349,43,Add MacBook To Cart,302,,Session Users 1-3,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,43,0,3
+1777566833394,4,View Cart,200,,Session Users 1-3,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566833402,34,Login,302,,Session Users 1-3,,true,,110,294,1,1,http://localhost:8080/orders/login,34,0,1
+1777566833436,35,Add iPhone To Cart,302,,Session Users 1-3,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,35,0,4
+1777566833472,34,Add MacBook To Cart,302,,Session Users 1-3,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,34,0,1
+1777566833507,5,View Cart,200,,Session Users 1-3,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,5,0,2
+1777566833513,35,Login,302,,Session Users 1-3,,true,,110,294,1,1,http://localhost:8080/orders/login,35,0,1
+1777566833549,33,Add iPhone To Cart,302,,Session Users 1-3,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,33,0,1
+1777566833582,32,Add MacBook To Cart,302,,Session Users 1-3,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,32,0,1
+1777566833615,5,View Cart,200,,Session Users 1-3,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,5,0,2
+1777566833621,31,Login,302,,Session Users 1-3,,true,,110,294,1,1,http://localhost:8080/orders/login,31,0,1
+1777566833652,32,Add iPhone To Cart,302,,Session Users 1-3,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,32,0,1
+1777566833685,44,Add MacBook To Cart,302,,Session Users 1-3,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,44,0,1
+1777566833729,3,View Cart,200,,Session Users 1-3,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566833732,37,Login,302,,Session Users 1-3,,true,,110,294,1,1,http://localhost:8080/orders/login,37,0,2
+1777566833769,31,Add iPhone To Cart,302,,Session Users 1-3,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,31,0,2
+1777566833800,42,Add MacBook To Cart,302,,Session Users 1-3,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,42,0,4
+1777566833845,7,View Cart,200,,Session Users 1-3,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,7,0,2
+1777566834456,35,Login,302,,Session Users 1-4,,true,,191,241,1,1,http://localhost:8080/orders/login,35,0,1
+1777566834492,30,Add iPhone To Cart,302,,Session Users 1-4,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,30,0,3
+1777566834522,37,Add MacBook To Cart,302,,Session Users 1-4,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,37,0,3
+1777566834562,5,View Cart,200,,Session Users 1-4,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,5,0,3
+1777566834571,45,Login,302,,Session Users 1-4,,true,,110,294,1,1,http://localhost:8080/orders/login,45,0,1
+1777566834616,33,Add iPhone To Cart,302,,Session Users 1-4,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,33,0,1
+1777566834650,30,Add MacBook To Cart,302,,Session Users 1-4,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,30,0,2
+1777566834681,2,View Cart,200,,Session Users 1-4,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566834684,30,Login,302,,Session Users 1-4,,true,,110,294,1,1,http://localhost:8080/orders/login,30,0,1
+1777566834715,27,Add iPhone To Cart,302,,Session Users 1-4,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,0
+1777566834743,34,Add MacBook To Cart,302,,Session Users 1-4,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,34,0,1
+1777566834778,2,View Cart,200,,Session Users 1-4,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566834781,32,Login,302,,Session Users 1-4,,true,,110,294,1,1,http://localhost:8080/orders/login,32,0,1
+1777566834814,27,Add iPhone To Cart,302,,Session Users 1-4,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,0
+1777566834842,24,Add MacBook To Cart,302,,Session Users 1-4,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566834867,2,View Cart,200,,Session Users 1-4,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566834870,34,Login,302,,Session Users 1-4,,true,,110,294,1,1,http://localhost:8080/orders/login,34,0,0
+1777566834904,36,Add iPhone To Cart,302,,Session Users 1-4,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,36,0,1
+1777566834940,37,Add MacBook To Cart,302,,Session Users 1-4,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,37,0,2
+1777566834978,2,View Cart,200,,Session Users 1-4,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566835657,26,Login,302,,Session Users 1-5,,true,,191,241,1,1,http://localhost:8080/orders/login,26,0,0
+1777566835684,34,Add iPhone To Cart,302,,Session Users 1-5,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,34,0,1
+1777566835720,38,Add MacBook To Cart,302,,Session Users 1-5,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,38,0,2
+1777566835759,5,View Cart,200,,Session Users 1-5,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,5,0,2
+1777566835764,34,Login,302,,Session Users 1-5,,true,,110,294,1,1,http://localhost:8080/orders/login,34,0,4
+1777566835798,30,Add iPhone To Cart,302,,Session Users 1-5,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,30,0,3
+1777566835829,24,Add MacBook To Cart,302,,Session Users 1-5,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566835853,3,View Cart,200,,Session Users 1-5,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566835857,26,Login,302,,Session Users 1-5,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,0
+1777566835883,43,Add iPhone To Cart,302,,Session Users 1-5,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,43,0,1
+1777566835927,39,Add MacBook To Cart,302,,Session Users 1-5,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,39,0,1
+1777566835969,10,View Cart,200,,Session Users 1-5,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,10,0,1
+1777566835981,28,Login,302,,Session Users 1-5,,true,,110,294,1,1,http://localhost:8080/orders/login,28,0,2
+1777566836010,32,Add iPhone To Cart,302,,Session Users 1-5,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,32,0,1
+1777566836043,28,Add MacBook To Cart,302,,Session Users 1-5,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566836071,3,View Cart,200,,Session Users 1-5,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566836075,34,Login,302,,Session Users 1-5,,true,,110,294,1,1,http://localhost:8080/orders/login,34,0,2
+1777566836109,31,Add iPhone To Cart,302,,Session Users 1-5,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,31,0,4
+1777566836140,25,Add MacBook To Cart,302,,Session Users 1-5,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566836169,4,View Cart,200,,Session Users 1-5,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566836857,25,Login,302,,Session Users 1-6,,true,,191,241,1,1,http://localhost:8080/orders/login,25,0,0
+1777566836883,34,Add iPhone To Cart,302,,Session Users 1-6,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,34,0,0
+1777566836917,33,Add MacBook To Cart,302,,Session Users 1-6,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,33,0,1
+1777566836950,3,View Cart,200,,Session Users 1-6,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566836953,26,Login,302,,Session Users 1-6,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,1
+1777566836979,26,Add iPhone To Cart,302,,Session Users 1-6,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,26,0,2
+1777566837006,25,Add MacBook To Cart,302,,Session Users 1-6,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566837031,4,View Cart,200,,Session Users 1-6,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,2
+1777566837036,24,Login,302,,Session Users 1-6,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,1
+1777566837060,27,Add iPhone To Cart,302,,Session Users 1-6,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566837087,36,Add MacBook To Cart,302,,Session Users 1-6,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,36,0,3
+1777566837126,4,View Cart,200,,Session Users 1-6,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566837132,30,Login,302,,Session Users 1-6,,true,,110,294,1,1,http://localhost:8080/orders/login,30,0,1
+1777566837167,24,Add iPhone To Cart,302,,Session Users 1-6,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,2
+1777566837192,30,Add MacBook To Cart,302,,Session Users 1-6,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,30,0,1
+1777566837224,6,View Cart,200,,Session Users 1-6,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,6,0,2
+1777566837231,38,Login,302,,Session Users 1-6,,true,,110,294,1,1,http://localhost:8080/orders/login,38,0,2
+1777566837270,25,Add iPhone To Cart,302,,Session Users 1-6,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566837296,22,Add MacBook To Cart,302,,Session Users 1-6,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566837319,2,View Cart,200,,Session Users 1-6,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566838057,25,Login,302,,Session Users 1-7,,true,,191,241,1,1,http://localhost:8080/orders/login,25,0,1
+1777566838083,23,Add iPhone To Cart,302,,Session Users 1-7,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,0
+1777566838107,25,Add MacBook To Cart,302,,Session Users 1-7,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566838133,4,View Cart,200,,Session Users 1-7,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,4,0,2
+1777566838138,36,Login,302,,Session Users 1-7,,true,,110,294,1,1,http://localhost:8080/orders/login,36,0,0
+1777566838174,39,Add iPhone To Cart,302,,Session Users 1-7,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,39,0,2
+1777566838214,37,Add MacBook To Cart,302,,Session Users 1-7,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,37,0,5
+1777566838257,9,View Cart,200,,Session Users 1-7,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,7,0,3
+1777566838267,35,Login,302,,Session Users 1-7,,true,,110,294,1,1,http://localhost:8080/orders/login,35,0,3
+1777566838303,37,Add iPhone To Cart,302,,Session Users 1-7,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,37,0,2
+1777566838340,27,Add MacBook To Cart,302,,Session Users 1-7,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,27,0,3
+1777566838368,2,View Cart,200,,Session Users 1-7,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566838371,36,Login,302,,Session Users 1-7,,true,,110,294,1,1,http://localhost:8080/orders/login,36,0,1
+1777566838407,34,Add iPhone To Cart,302,,Session Users 1-7,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,34,0,2
+1777566838443,31,Add MacBook To Cart,302,,Session Users 1-7,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,31,0,1
+1777566838474,4,View Cart,200,,Session Users 1-7,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,4,0,3
+1777566838479,25,Login,302,,Session Users 1-7,,true,,110,294,1,1,http://localhost:8080/orders/login,25,0,0
+1777566838505,29,Add iPhone To Cart,302,,Session Users 1-7,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,29,0,0
+1777566838535,26,Add MacBook To Cart,302,,Session Users 1-7,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,2
+1777566838562,2,View Cart,200,,Session Users 1-7,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566839257,26,Login,302,,Session Users 1-8,,true,,191,241,1,1,http://localhost:8080/orders/login,26,0,0
+1777566839283,24,Add iPhone To Cart,302,,Session Users 1-8,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566839309,24,Add MacBook To Cart,302,,Session Users 1-8,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,2
+1777566839334,2,View Cart,200,,Session Users 1-8,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566839337,29,Login,302,,Session Users 1-8,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,1
+1777566839367,32,Add iPhone To Cart,302,,Session Users 1-8,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,32,0,3
+1777566839399,26,Add MacBook To Cart,302,,Session Users 1-8,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566839426,2,View Cart,200,,Session Users 1-8,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566839428,24,Login,302,,Session Users 1-8,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,1
+1777566839452,27,Add iPhone To Cart,302,,Session Users 1-8,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,0
+1777566839480,28,Add MacBook To Cart,302,,Session Users 1-8,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,2
+1777566839509,2,View Cart,200,,Session Users 1-8,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566839511,26,Login,302,,Session Users 1-8,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,1
+1777566839538,29,Add iPhone To Cart,302,,Session Users 1-8,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,29,0,3
+1777566839567,23,Add MacBook To Cart,302,,Session Users 1-8,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566839590,3,View Cart,200,,Session Users 1-8,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566839594,29,Login,302,,Session Users 1-8,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,0
+1777566839623,27,Add iPhone To Cart,302,,Session Users 1-8,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,3
+1777566839650,25,Add MacBook To Cart,302,,Session Users 1-8,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,2
+1777566839676,4,View Cart,200,,Session Users 1-8,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,4,0,3
+1777566840456,21,Login,302,,Session Users 1-9,,true,,191,241,1,1,http://localhost:8080/orders/login,21,0,0
+1777566840481,21,Add iPhone To Cart,302,,Session Users 1-9,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566840502,28,Add MacBook To Cart,302,,Session Users 1-9,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566840530,2,View Cart,200,,Session Users 1-9,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566840533,24,Login,302,,Session Users 1-9,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,0
+1777566840557,29,Add iPhone To Cart,302,,Session Users 1-9,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,29,0,1
+1777566840587,28,Add MacBook To Cart,302,,Session Users 1-9,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,0
+1777566840615,3,View Cart,200,,Session Users 1-9,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566840619,24,Login,302,,Session Users 1-9,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,0
+1777566840644,22,Add iPhone To Cart,302,,Session Users 1-9,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,3
+1777566840666,23,Add MacBook To Cart,302,,Session Users 1-9,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,2
+1777566840690,4,View Cart,200,,Session Users 1-9,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566840694,27,Login,302,,Session Users 1-9,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,1
+1777566840721,32,Add iPhone To Cart,302,,Session Users 1-9,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,32,0,2
+1777566840753,33,Add MacBook To Cart,302,,Session Users 1-9,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,33,0,4
+1777566840787,3,View Cart,200,,Session Users 1-9,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,2
+1777566840791,30,Login,302,,Session Users 1-9,,true,,110,294,1,1,http://localhost:8080/orders/login,30,0,2
+1777566840821,32,Add iPhone To Cart,302,,Session Users 1-9,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,32,0,1
+1777566840853,24,Add MacBook To Cart,302,,Session Users 1-9,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566840878,10,View Cart,200,,Session Users 1-9,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,9,0,0
+1777566841657,20,Login,302,,Session Users 1-10,,true,,191,241,1,1,http://localhost:8080/orders/login,20,0,1
+1777566841678,21,Add iPhone To Cart,302,,Session Users 1-10,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566841699,18,Add MacBook To Cart,302,,Session Users 1-10,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566841718,3,View Cart,200,,Session Users 1-10,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566841721,22,Login,302,,Session Users 1-10,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,1
+1777566841743,25,Add iPhone To Cart,302,,Session Users 1-10,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,3
+1777566841769,27,Add MacBook To Cart,302,,Session Users 1-10,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,27,0,3
+1777566841799,4,View Cart,200,,Session Users 1-10,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566841803,22,Login,302,,Session Users 1-10,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,1
+1777566841826,19,Add iPhone To Cart,302,,Session Users 1-10,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566841845,23,Add MacBook To Cart,302,,Session Users 1-10,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,3
+1777566841869,5,View Cart,200,,Session Users 1-10,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,5,0,2
+1777566841875,22,Login,302,,Session Users 1-10,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,3
+1777566841897,24,Add iPhone To Cart,302,,Session Users 1-10,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566841921,20,Add MacBook To Cart,302,,Session Users 1-10,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566841942,4,View Cart,200,,Session Users 1-10,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566841946,27,Login,302,,Session Users 1-10,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,1
+1777566841973,19,Add iPhone To Cart,302,,Session Users 1-10,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566841992,18,Add MacBook To Cart,302,,Session Users 1-10,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566842011,3,View Cart,200,,Session Users 1-10,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566842854,17,Login,302,,Session Users 1-11,,true,,191,241,1,1,http://localhost:8080/orders/login,17,0,1
+1777566842872,24,Add iPhone To Cart,302,,Session Users 1-11,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,0
+1777566842897,27,Add MacBook To Cart,302,,Session Users 1-11,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,27,0,3
+1777566842925,6,View Cart,200,,Session Users 1-11,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,6,0,3
+1777566842932,29,Login,302,,Session Users 1-11,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,1
+1777566842961,24,Add iPhone To Cart,302,,Session Users 1-11,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,4
+1777566842986,23,Add MacBook To Cart,302,,Session Users 1-11,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,2
+1777566843010,4,View Cart,200,,Session Users 1-11,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,2
+1777566843015,26,Login,302,,Session Users 1-11,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,1
+1777566843041,23,Add iPhone To Cart,302,,Session Users 1-11,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566843064,27,Add MacBook To Cart,302,,Session Users 1-11,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,27,0,2
+1777566843091,4,View Cart,200,,Session Users 1-11,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,4,0,3
+1777566843096,23,Login,302,,Session Users 1-11,,true,,110,294,1,1,http://localhost:8080/orders/login,23,0,1
+1777566843120,26,Add iPhone To Cart,302,,Session Users 1-11,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,26,0,2
+1777566843146,27,Add MacBook To Cart,302,,Session Users 1-11,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566843173,4,View Cart,200,,Session Users 1-11,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566843177,23,Login,302,,Session Users 1-11,,true,,110,294,1,1,http://localhost:8080/orders/login,23,0,2
+1777566843200,19,Add iPhone To Cart,302,,Session Users 1-11,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566843220,19,Add MacBook To Cart,302,,Session Users 1-11,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,2
+1777566843240,3,View Cart,200,,Session Users 1-11,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566844059,19,Login,302,,Session Users 1-12,,true,,191,241,1,1,http://localhost:8080/orders/login,19,0,0
+1777566844078,16,Add iPhone To Cart,302,,Session Users 1-12,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,16,0,1
+1777566844095,15,Add MacBook To Cart,302,,Session Users 1-12,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,15,0,0
+1777566844111,2,View Cart,200,,Session Users 1-12,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566844114,18,Login,302,,Session Users 1-12,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566844132,18,Add iPhone To Cart,302,,Session Users 1-12,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566844150,19,Add MacBook To Cart,302,,Session Users 1-12,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566844169,5,View Cart,200,,Session Users 1-12,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,5,0,2
+1777566844175,25,Login,302,,Session Users 1-12,,true,,110,294,1,1,http://localhost:8080/orders/login,25,0,1
+1777566844201,18,Add iPhone To Cart,302,,Session Users 1-12,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566844219,19,Add MacBook To Cart,302,,Session Users 1-12,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566844239,3,View Cart,200,,Session Users 1-12,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566844243,17,Login,302,,Session Users 1-12,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566844260,25,Add iPhone To Cart,302,,Session Users 1-12,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,2
+1777566844286,22,Add MacBook To Cart,302,,Session Users 1-12,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,3
+1777566844308,3,View Cart,200,,Session Users 1-12,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566844311,25,Login,302,,Session Users 1-12,,true,,110,294,1,1,http://localhost:8080/orders/login,25,0,1
+1777566844336,30,Add iPhone To Cart,302,,Session Users 1-12,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,30,0,3
+1777566844366,24,Add MacBook To Cart,302,,Session Users 1-12,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566844390,6,View Cart,200,,Session Users 1-12,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,6,0,1
+1777566845256,16,Login,302,,Session Users 1-13,,true,,191,241,1,1,http://localhost:8080/orders/login,16,0,0
+1777566845273,15,Add iPhone To Cart,302,,Session Users 1-13,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,15,0,0
+1777566845288,24,Add MacBook To Cart,302,,Session Users 1-13,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,2
+1777566845315,3,View Cart,200,,Session Users 1-13,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566845319,22,Login,302,,Session Users 1-13,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,0
+1777566845342,16,Add iPhone To Cart,302,,Session Users 1-13,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,16,0,0
+1777566845358,18,Add MacBook To Cart,302,,Session Users 1-13,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566845376,2,View Cart,200,,Session Users 1-13,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566845379,15,Login,302,,Session Users 1-13,,true,,110,294,1,1,http://localhost:8080/orders/login,15,0,0
+1777566845394,19,Add iPhone To Cart,302,,Session Users 1-13,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566845414,21,Add MacBook To Cart,302,,Session Users 1-13,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566845436,3,View Cart,200,,Session Users 1-13,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566845440,30,Login,302,,Session Users 1-13,,true,,110,294,1,1,http://localhost:8080/orders/login,30,0,0
+1777566845470,25,Add iPhone To Cart,302,,Session Users 1-13,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566845500,29,Add MacBook To Cart,302,,Session Users 1-13,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,29,0,2
+1777566845530,10,View Cart,200,,Session Users 1-13,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,7,0,1
+1777566845540,28,Login,302,,Session Users 1-13,,true,,110,294,1,1,http://localhost:8080/orders/login,28,0,1
+1777566845569,26,Add iPhone To Cart,302,,Session Users 1-13,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,26,0,0
+1777566845596,26,Add MacBook To Cart,302,,Session Users 1-13,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,0
+1777566845622,3,View Cart,200,,Session Users 1-13,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566846457,21,Login,302,,Session Users 1-14,,true,,191,241,1,1,http://localhost:8080/orders/login,21,0,0
+1777566846479,17,Add iPhone To Cart,302,,Session Users 1-14,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,17,0,1
+1777566846496,18,Add MacBook To Cart,302,,Session Users 1-14,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566846514,4,View Cart,200,,Session Users 1-14,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566846518,21,Login,302,,Session Users 1-14,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,1
+1777566846540,19,Add iPhone To Cart,302,,Session Users 1-14,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566846560,26,Add MacBook To Cart,302,,Session Users 1-14,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,4
+1777566846587,2,View Cart,200,,Session Users 1-14,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566846590,23,Login,302,,Session Users 1-14,,true,,110,294,1,1,http://localhost:8080/orders/login,23,0,1
+1777566846614,24,Add iPhone To Cart,302,,Session Users 1-14,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566846638,20,Add MacBook To Cart,302,,Session Users 1-14,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566846658,3,View Cart,200,,Session Users 1-14,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566846661,22,Login,302,,Session Users 1-14,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,1
+1777566846683,23,Add iPhone To Cart,302,,Session Users 1-14,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566846706,25,Add MacBook To Cart,302,,Session Users 1-14,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566846731,3,View Cart,200,,Session Users 1-14,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566846734,25,Login,302,,Session Users 1-14,,true,,110,294,1,1,http://localhost:8080/orders/login,25,0,1
+1777566846760,24,Add iPhone To Cart,302,,Session Users 1-14,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,2
+1777566846784,22,Add MacBook To Cart,302,,Session Users 1-14,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566846807,2,View Cart,200,,Session Users 1-14,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566847657,23,Login,302,,Session Users 1-15,,true,,191,241,1,1,http://localhost:8080/orders/login,23,0,0
+1777566847681,23,Add iPhone To Cart,302,,Session Users 1-15,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566847704,26,Add MacBook To Cart,302,,Session Users 1-15,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566847731,4,View Cart,200,,Session Users 1-15,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566847735,23,Login,302,,Session Users 1-15,,true,,110,294,1,1,http://localhost:8080/orders/login,23,0,1
+1777566847758,18,Add iPhone To Cart,302,,Session Users 1-15,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566847779,20,Add MacBook To Cart,302,,Session Users 1-15,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566847799,3,View Cart,200,,Session Users 1-15,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,3,0,2
+1777566847802,29,Login,302,,Session Users 1-15,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,1
+1777566847832,24,Add iPhone To Cart,302,,Session Users 1-15,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,0
+1777566847857,22,Add MacBook To Cart,302,,Session Users 1-15,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566847879,3,View Cart,200,,Session Users 1-15,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566847883,25,Login,302,,Session Users 1-15,,true,,110,294,1,1,http://localhost:8080/orders/login,25,0,1
+1777566847908,23,Add iPhone To Cart,302,,Session Users 1-15,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566847931,23,Add MacBook To Cart,302,,Session Users 1-15,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566847954,4,View Cart,200,,Session Users 1-15,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566847958,30,Login,302,,Session Users 1-15,,true,,110,294,1,1,http://localhost:8080/orders/login,30,0,1
+1777566847988,23,Add iPhone To Cart,302,,Session Users 1-15,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566848012,22,Add MacBook To Cart,302,,Session Users 1-15,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566848035,4,View Cart,200,,Session Users 1-15,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,4,0,0
+1777566848855,22,Login,302,,Session Users 1-16,,true,,191,241,1,1,http://localhost:8080/orders/login,22,0,1
+1777566848878,21,Add iPhone To Cart,302,,Session Users 1-16,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566848899,30,Add MacBook To Cart,302,,Session Users 1-16,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,30,0,1
+1777566848929,3,View Cart,200,,Session Users 1-16,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,2
+1777566848933,20,Login,302,,Session Users 1-16,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,0
+1777566848953,20,Add iPhone To Cart,302,,Session Users 1-16,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566848973,20,Add MacBook To Cart,302,,Session Users 1-16,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566848993,2,View Cart,200,,Session Users 1-16,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566848996,26,Login,302,,Session Users 1-16,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,0
+1777566849022,28,Add iPhone To Cart,302,,Session Users 1-16,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566849050,20,Add MacBook To Cart,302,,Session Users 1-16,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566849071,3,View Cart,200,,Session Users 1-16,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566849074,19,Login,302,,Session Users 1-16,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566849093,20,Add iPhone To Cart,302,,Session Users 1-16,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566849113,23,Add MacBook To Cart,302,,Session Users 1-16,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566849136,2,View Cart,200,,Session Users 1-16,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566849139,22,Login,302,,Session Users 1-16,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,0
+1777566849162,23,Add iPhone To Cart,302,,Session Users 1-16,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,0
+1777566849185,23,Add MacBook To Cart,302,,Session Users 1-16,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566849208,5,View Cart,200,,Session Users 1-16,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,5,0,1
+1777566850058,22,Login,302,,Session Users 1-17,,true,,191,241,1,1,http://localhost:8080/orders/login,22,0,1
+1777566850080,20,Add iPhone To Cart,302,,Session Users 1-17,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566850100,20,Add MacBook To Cart,302,,Session Users 1-17,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566850120,2,View Cart,200,,Session Users 1-17,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566850123,19,Login,302,,Session Users 1-17,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566850142,22,Add iPhone To Cart,302,,Session Users 1-17,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566850164,23,Add MacBook To Cart,302,,Session Users 1-17,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566850187,3,View Cart,200,,Session Users 1-17,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566850190,22,Login,302,,Session Users 1-17,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,1
+1777566850213,22,Add iPhone To Cart,302,,Session Users 1-17,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566850235,21,Add MacBook To Cart,302,,Session Users 1-17,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566850256,3,View Cart,200,,Session Users 1-17,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566850260,26,Login,302,,Session Users 1-17,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,0
+1777566850287,28,Add iPhone To Cart,302,,Session Users 1-17,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,28,0,0
+1777566850316,22,Add MacBook To Cart,302,,Session Users 1-17,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566850338,4,View Cart,200,,Session Users 1-17,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566850342,24,Login,302,,Session Users 1-17,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,0
+1777566850367,35,Add iPhone To Cart,302,,Session Users 1-17,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,35,0,0
+1777566850402,38,Add MacBook To Cart,302,,Session Users 1-17,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,38,0,2
+1777566850440,6,View Cart,200,,Session Users 1-17,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,6,0,1
+1777566851258,25,Login,302,,Session Users 1-18,,true,,191,241,1,1,http://localhost:8080/orders/login,25,0,0
+1777566851287,22,Add iPhone To Cart,302,,Session Users 1-18,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,2
+1777566851310,20,Add MacBook To Cart,302,,Session Users 1-18,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566851331,1,View Cart,200,,Session Users 1-18,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566851333,19,Login,302,,Session Users 1-18,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566851352,24,Add iPhone To Cart,302,,Session Users 1-18,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,0
+1777566851377,25,Add MacBook To Cart,302,,Session Users 1-18,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566851402,5,View Cart,200,,Session Users 1-18,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,5,0,3
+1777566851407,29,Login,302,,Session Users 1-18,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,1
+1777566851436,25,Add iPhone To Cart,302,,Session Users 1-18,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566851462,26,Add MacBook To Cart,302,,Session Users 1-18,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566851488,4,View Cart,200,,Session Users 1-18,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,4,0,3
+1777566851493,27,Login,302,,Session Users 1-18,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,0
+1777566851522,27,Add iPhone To Cart,302,,Session Users 1-18,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566851549,28,Add MacBook To Cart,302,,Session Users 1-18,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,3
+1777566851577,2,View Cart,200,,Session Users 1-18,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566851579,24,Login,302,,Session Users 1-18,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,1
+1777566851603,22,Add iPhone To Cart,302,,Session Users 1-18,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566851626,22,Add MacBook To Cart,302,,Session Users 1-18,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566851648,3,View Cart,200,,Session Users 1-18,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566852459,26,Login,302,,Session Users 1-19,,true,,191,241,1,1,http://localhost:8080/orders/login,25,0,1
+1777566852485,28,Add iPhone To Cart,302,,Session Users 1-19,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566852513,29,Add MacBook To Cart,302,,Session Users 1-19,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,29,0,3
+1777566852543,2,View Cart,200,,Session Users 1-19,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566852545,30,Login,302,,Session Users 1-19,,true,,110,294,1,1,http://localhost:8080/orders/login,30,0,2
+1777566852575,28,Add iPhone To Cart,302,,Session Users 1-19,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566852604,32,Add MacBook To Cart,302,,Session Users 1-19,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,32,0,1
+1777566852636,4,View Cart,200,,Session Users 1-19,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566852640,28,Login,302,,Session Users 1-19,,true,,110,294,1,1,http://localhost:8080/orders/login,28,0,1
+1777566852668,32,Add iPhone To Cart,302,,Session Users 1-19,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,32,0,3
+1777566852700,28,Add MacBook To Cart,302,,Session Users 1-19,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566852728,4,View Cart,200,,Session Users 1-19,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,4,0,3
+1777566852733,32,Login,302,,Session Users 1-19,,true,,110,294,1,1,http://localhost:8080/orders/login,32,0,1
+1777566852766,27,Add iPhone To Cart,302,,Session Users 1-19,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,0
+1777566852796,48,Add MacBook To Cart,302,,Session Users 1-19,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,48,0,0
+1777566852845,4,View Cart,200,,Session Users 1-19,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,4,0,0
+1777566852849,34,Login,302,,Session Users 1-19,,true,,110,294,1,1,http://localhost:8080/orders/login,34,0,1
+1777566852887,29,Add iPhone To Cart,302,,Session Users 1-19,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,29,0,1
+1777566852917,44,Add MacBook To Cart,302,,Session Users 1-19,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,44,0,3
+1777566852962,9,View Cart,200,,Session Users 1-19,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,8,0,6
+1777566853657,21,Login,302,,Session Users 1-20,,true,,191,241,1,1,http://localhost:8080/orders/login,21,0,0
+1777566853678,22,Add iPhone To Cart,302,,Session Users 1-20,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566853700,24,Add MacBook To Cart,302,,Session Users 1-20,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566853727,5,View Cart,200,,Session Users 1-20,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,5,0,1
+1777566853733,29,Login,302,,Session Users 1-20,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,1
+1777566853762,23,Add iPhone To Cart,302,,Session Users 1-20,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,4
+1777566853785,25,Add MacBook To Cart,302,,Session Users 1-20,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566853811,2,View Cart,200,,Session Users 1-20,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566853814,28,Login,302,,Session Users 1-20,,true,,110,294,1,1,http://localhost:8080/orders/login,28,0,0
+1777566853842,27,Add iPhone To Cart,302,,Session Users 1-20,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566853869,28,Add MacBook To Cart,302,,Session Users 1-20,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566853898,3,View Cart,200,,Session Users 1-20,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566853901,27,Login,302,,Session Users 1-20,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,0
+1777566853928,25,Add iPhone To Cart,302,,Session Users 1-20,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566853954,31,Add MacBook To Cart,302,,Session Users 1-20,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,31,0,0
+1777566853985,4,View Cart,200,,Session Users 1-20,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566853989,27,Login,302,,Session Users 1-20,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,1
+1777566854016,31,Add iPhone To Cart,302,,Session Users 1-20,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,31,0,1
+1777566854047,31,Add MacBook To Cart,302,,Session Users 1-20,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,31,0,1
+1777566854078,2,View Cart,200,,Session Users 1-20,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566854855,20,Login,302,,Session Users 1-21,,true,,191,241,1,1,http://localhost:8080/orders/login,20,0,0
+1777566854876,22,Add iPhone To Cart,302,,Session Users 1-21,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566854898,28,Add MacBook To Cart,302,,Session Users 1-21,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,3
+1777566854927,5,View Cart,200,,Session Users 1-21,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,5,0,2
+1777566854932,42,Login,302,,Session Users 1-21,,true,,110,294,1,1,http://localhost:8080/orders/login,42,0,1
+1777566854975,28,Add iPhone To Cart,302,,Session Users 1-21,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,28,0,2
+1777566855003,30,Add MacBook To Cart,302,,Session Users 1-21,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,30,0,1
+1777566855033,4,View Cart,200,,Session Users 1-21,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,0
+1777566855038,29,Login,302,,Session Users 1-21,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,0
+1777566855067,33,Add iPhone To Cart,302,,Session Users 1-21,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,33,0,2
+1777566855100,28,Add MacBook To Cart,302,,Session Users 1-21,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566855129,3,View Cart,200,,Session Users 1-21,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,2
+1777566855132,32,Login,302,,Session Users 1-21,,true,,110,294,1,1,http://localhost:8080/orders/login,32,0,2
+1777566855164,28,Add iPhone To Cart,302,,Session Users 1-21,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566855192,25,Add MacBook To Cart,302,,Session Users 1-21,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566855220,2,View Cart,200,,Session Users 1-21,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566855223,23,Login,302,,Session Users 1-21,,true,,110,294,1,1,http://localhost:8080/orders/login,23,0,1
+1777566855247,18,Add iPhone To Cart,302,,Session Users 1-21,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566855266,23,Add MacBook To Cart,302,,Session Users 1-21,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566855289,3,View Cart,200,,Session Users 1-21,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566856057,21,Login,302,,Session Users 1-22,,true,,191,241,1,1,http://localhost:8080/orders/login,21,0,1
+1777566856079,24,Add iPhone To Cart,302,,Session Users 1-22,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,0
+1777566856104,23,Add MacBook To Cart,302,,Session Users 1-22,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,0
+1777566856127,3,View Cart,200,,Session Users 1-22,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566856131,19,Login,302,,Session Users 1-22,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566856151,27,Add iPhone To Cart,302,,Session Users 1-22,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,0
+1777566856178,30,Add MacBook To Cart,302,,Session Users 1-22,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,30,0,1
+1777566856208,4,View Cart,200,,Session Users 1-22,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566856212,27,Login,302,,Session Users 1-22,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,1
+1777566856239,27,Add iPhone To Cart,302,,Session Users 1-22,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566856266,25,Add MacBook To Cart,302,,Session Users 1-22,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566856291,2,View Cart,200,,Session Users 1-22,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566856294,28,Login,302,,Session Users 1-22,,true,,110,294,1,1,http://localhost:8080/orders/login,28,0,1
+1777566856324,26,Add iPhone To Cart,302,,Session Users 1-22,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566856350,30,Add MacBook To Cart,302,,Session Users 1-22,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,30,0,1
+1777566856381,2,View Cart,200,,Session Users 1-22,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566856383,24,Login,302,,Session Users 1-22,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,1
+1777566856407,29,Add iPhone To Cart,302,,Session Users 1-22,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,29,0,1
+1777566856437,24,Add MacBook To Cart,302,,Session Users 1-22,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,0
+1777566856461,6,View Cart,200,,Session Users 1-22,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,6,0,1
+1777566857257,21,Login,302,,Session Users 1-23,,true,,191,241,1,1,http://localhost:8080/orders/login,21,0,0
+1777566857278,21,Add iPhone To Cart,302,,Session Users 1-23,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566857299,21,Add MacBook To Cart,302,,Session Users 1-23,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566857320,2,View Cart,200,,Session Users 1-23,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566857323,19,Login,302,,Session Users 1-23,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566857342,26,Add iPhone To Cart,302,,Session Users 1-23,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566857368,20,Add MacBook To Cart,302,,Session Users 1-23,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566857389,3,View Cart,200,,Session Users 1-23,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566857393,21,Login,302,,Session Users 1-23,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,0
+1777566857414,24,Add iPhone To Cart,302,,Session Users 1-23,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566857438,21,Add MacBook To Cart,302,,Session Users 1-23,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566857459,3,View Cart,200,,Session Users 1-23,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566857463,24,Login,302,,Session Users 1-23,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,0
+1777566857488,22,Add iPhone To Cart,302,,Session Users 1-23,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566857510,21,Add MacBook To Cart,302,,Session Users 1-23,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566857532,3,View Cart,200,,Session Users 1-23,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566857535,20,Login,302,,Session Users 1-23,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,1
+1777566857555,23,Add iPhone To Cart,302,,Session Users 1-23,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566857578,20,Add MacBook To Cart,302,,Session Users 1-23,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566857598,2,View Cart,200,,Session Users 1-23,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566858455,18,Login,302,,Session Users 1-24,,true,,191,241,1,1,http://localhost:8080/orders/login,18,0,1
+1777566858474,19,Add iPhone To Cart,302,,Session Users 1-24,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566858493,21,Add MacBook To Cart,302,,Session Users 1-24,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566858514,4,View Cart,200,,Session Users 1-24,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566858518,20,Login,302,,Session Users 1-24,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,0
+1777566858538,25,Add iPhone To Cart,302,,Session Users 1-24,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566858563,23,Add MacBook To Cart,302,,Session Users 1-24,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566858587,3,View Cart,200,,Session Users 1-24,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566858590,25,Login,302,,Session Users 1-24,,true,,110,294,1,1,http://localhost:8080/orders/login,25,0,1
+1777566858615,20,Add iPhone To Cart,302,,Session Users 1-24,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566858635,21,Add MacBook To Cart,302,,Session Users 1-24,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566858656,2,View Cart,200,,Session Users 1-24,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566858658,21,Login,302,,Session Users 1-24,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,1
+1777566858680,21,Add iPhone To Cart,302,,Session Users 1-24,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566858701,29,Add MacBook To Cart,302,,Session Users 1-24,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,29,0,1
+1777566858731,3,View Cart,200,,Session Users 1-24,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566858734,27,Login,302,,Session Users 1-24,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,0
+1777566858761,23,Add iPhone To Cart,302,,Session Users 1-24,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566858784,26,Add MacBook To Cart,302,,Session Users 1-24,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566858810,4,View Cart,200,,Session Users 1-24,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566859658,25,Login,302,,Session Users 1-25,,true,,191,241,1,1,http://localhost:8080/orders/login,25,0,1
+1777566859683,21,Add iPhone To Cart,302,,Session Users 1-25,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566859704,20,Add MacBook To Cart,302,,Session Users 1-25,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566859724,3,View Cart,200,,Session Users 1-25,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566859728,18,Login,302,,Session Users 1-25,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566859746,22,Add iPhone To Cart,302,,Session Users 1-25,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566859768,20,Add MacBook To Cart,302,,Session Users 1-25,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566859788,2,View Cart,200,,Session Users 1-25,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566859790,19,Login,302,,Session Users 1-25,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,1
+1777566859810,20,Add iPhone To Cart,302,,Session Users 1-25,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566859830,22,Add MacBook To Cart,302,,Session Users 1-25,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566859852,3,View Cart,200,,Session Users 1-25,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566859855,19,Login,302,,Session Users 1-25,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,1
+1777566859875,20,Add iPhone To Cart,302,,Session Users 1-25,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566859896,21,Add MacBook To Cart,302,,Session Users 1-25,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566859917,2,View Cart,200,,Session Users 1-25,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566859920,21,Login,302,,Session Users 1-25,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,0
+1777566859941,22,Add iPhone To Cart,302,,Session Users 1-25,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566859963,31,Add MacBook To Cart,302,,Session Users 1-25,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,31,0,1
+1777566859996,2,View Cart,200,,Session Users 1-25,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566860855,28,Login,302,,Session Users 1-26,,true,,191,241,1,1,http://localhost:8080/orders/login,28,0,1
+1777566860883,33,Add iPhone To Cart,302,,Session Users 1-26,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,33,0,1
+1777566860916,21,Add MacBook To Cart,302,,Session Users 1-26,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566860938,3,View Cart,200,,Session Users 1-26,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566860941,23,Login,302,,Session Users 1-26,,true,,110,294,1,1,http://localhost:8080/orders/login,23,0,0
+1777566860964,52,Add iPhone To Cart,302,,Session Users 1-26,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,52,0,1
+1777566861015,22,Add MacBook To Cart,302,,Session Users 1-26,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566861037,4,View Cart,200,,Session Users 1-26,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566861041,29,Login,302,,Session Users 1-26,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,1
+1777566861071,26,Add iPhone To Cart,302,,Session Users 1-26,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,26,0,0
+1777566861098,24,Add MacBook To Cart,302,,Session Users 1-26,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,0
+1777566861123,5,View Cart,200,,Session Users 1-26,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,4,0,2
+1777566861129,21,Login,302,,Session Users 1-26,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,0
+1777566861150,19,Add iPhone To Cart,302,,Session Users 1-26,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566861170,21,Add MacBook To Cart,302,,Session Users 1-26,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566861192,3,View Cart,200,,Session Users 1-26,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,2
+1777566861195,19,Login,302,,Session Users 1-26,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,1
+1777566861214,18,Add iPhone To Cart,302,,Session Users 1-26,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566861232,19,Add MacBook To Cart,302,,Session Users 1-26,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566861251,2,View Cart,200,,Session Users 1-26,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566862054,20,Login,302,,Session Users 1-27,,true,,191,241,1,1,http://localhost:8080/orders/login,20,0,0
+1777566862074,20,Add iPhone To Cart,302,,Session Users 1-27,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566862094,19,Add MacBook To Cart,302,,Session Users 1-27,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566862113,2,View Cart,200,,Session Users 1-27,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566862116,19,Login,302,,Session Users 1-27,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566862135,19,Add iPhone To Cart,302,,Session Users 1-27,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566862154,19,Add MacBook To Cart,302,,Session Users 1-27,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566862173,3,View Cart,200,,Session Users 1-27,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566862177,25,Login,302,,Session Users 1-27,,true,,110,294,1,1,http://localhost:8080/orders/login,25,0,0
+1777566862202,27,Add iPhone To Cart,302,,Session Users 1-27,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566862229,21,Add MacBook To Cart,302,,Session Users 1-27,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566862250,2,View Cart,200,,Session Users 1-27,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566862253,23,Login,302,,Session Users 1-27,,true,,110,294,1,1,http://localhost:8080/orders/login,23,0,1
+1777566862276,20,Add iPhone To Cart,302,,Session Users 1-27,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566862296,21,Add MacBook To Cart,302,,Session Users 1-27,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566862317,3,View Cart,200,,Session Users 1-27,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566862320,18,Login,302,,Session Users 1-27,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566862338,21,Add iPhone To Cart,302,,Session Users 1-27,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566862360,19,Add MacBook To Cart,302,,Session Users 1-27,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566862379,4,View Cart,200,,Session Users 1-27,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566863255,24,Login,302,,Session Users 1-28,,true,,191,241,1,1,http://localhost:8080/orders/login,24,0,1
+1777566863280,22,Add iPhone To Cart,302,,Session Users 1-28,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,2
+1777566863302,20,Add MacBook To Cart,302,,Session Users 1-28,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566863322,2,View Cart,200,,Session Users 1-28,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566863324,17,Login,302,,Session Users 1-28,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,1
+1777566863342,27,Add iPhone To Cart,302,,Session Users 1-28,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,7
+1777566863369,19,Add MacBook To Cart,302,,Session Users 1-28,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566863388,2,View Cart,200,,Session Users 1-28,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566863390,17,Login,302,,Session Users 1-28,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566863407,20,Add iPhone To Cart,302,,Session Users 1-28,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566863428,22,Add MacBook To Cart,302,,Session Users 1-28,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,2
+1777566863451,3,View Cart,200,,Session Users 1-28,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566863454,18,Login,302,,Session Users 1-28,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566863472,27,Add iPhone To Cart,302,,Session Users 1-28,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566863499,20,Add MacBook To Cart,302,,Session Users 1-28,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566863520,2,View Cart,200,,Session Users 1-28,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566863522,19,Login,302,,Session Users 1-28,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,1
+1777566863542,20,Add iPhone To Cart,302,,Session Users 1-28,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566863562,26,Add MacBook To Cart,302,,Session Users 1-28,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566863588,2,View Cart,200,,Session Users 1-28,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566864456,22,Login,302,,Session Users 1-29,,true,,191,241,1,1,http://localhost:8080/orders/login,22,0,1
+1777566864481,23,Add iPhone To Cart,302,,Session Users 1-29,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,0
+1777566864505,21,Add MacBook To Cart,302,,Session Users 1-29,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566864526,2,View Cart,200,,Session Users 1-29,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566864529,17,Login,302,,Session Users 1-29,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566864547,21,Add iPhone To Cart,302,,Session Users 1-29,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566864569,23,Add MacBook To Cart,302,,Session Users 1-29,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,2
+1777566864593,1,View Cart,200,,Session Users 1-29,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566864595,18,Login,302,,Session Users 1-29,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566864614,18,Add iPhone To Cart,302,,Session Users 1-29,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566864632,20,Add MacBook To Cart,302,,Session Users 1-29,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566864652,4,View Cart,200,,Session Users 1-29,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566864656,18,Login,302,,Session Users 1-29,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,1
+1777566864674,26,Add iPhone To Cart,302,,Session Users 1-29,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566864700,23,Add MacBook To Cart,302,,Session Users 1-29,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566864724,2,View Cart,200,,Session Users 1-29,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566864727,19,Login,302,,Session Users 1-29,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,1
+1777566864746,20,Add iPhone To Cart,302,,Session Users 1-29,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566864766,19,Add MacBook To Cart,302,,Session Users 1-29,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566864786,1,View Cart,200,,Session Users 1-29,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566865655,18,Login,302,,Session Users 1-30,,true,,191,241,1,1,http://localhost:8080/orders/login,18,0,1
+1777566865674,23,Add iPhone To Cart,302,,Session Users 1-30,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,0
+1777566865697,19,Add MacBook To Cart,302,,Session Users 1-30,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566865716,3,View Cart,200,,Session Users 1-30,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566865719,19,Login,302,,Session Users 1-30,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566865739,31,Add iPhone To Cart,302,,Session Users 1-30,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,31,0,3
+1777566865771,24,Add MacBook To Cart,302,,Session Users 1-30,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,0
+1777566865795,3,View Cart,200,,Session Users 1-30,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566865798,18,Login,302,,Session Users 1-30,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,1
+1777566865816,32,Add iPhone To Cart,302,,Session Users 1-30,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,32,0,3
+1777566865848,30,Add MacBook To Cart,302,,Session Users 1-30,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,30,0,3
+1777566865878,4,View Cart,200,,Session Users 1-30,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,4,0,2
+1777566865882,21,Login,302,,Session Users 1-30,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,1
+1777566865903,26,Add iPhone To Cart,302,,Session Users 1-30,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566865930,27,Add MacBook To Cart,302,,Session Users 1-30,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,27,0,0
+1777566865958,4,View Cart,200,,Session Users 1-30,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,4,0,0
+1777566865962,27,Login,302,,Session Users 1-30,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,1
+1777566865989,26,Add iPhone To Cart,302,,Session Users 1-30,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566866016,22,Add MacBook To Cart,302,,Session Users 1-30,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566866039,2,View Cart,200,,Session Users 1-30,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566866854,19,Login,302,,Session Users 1-31,,true,,191,241,1,1,http://localhost:8080/orders/login,19,0,0
+1777566866873,18,Add iPhone To Cart,302,,Session Users 1-31,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566866891,18,Add MacBook To Cart,302,,Session Users 1-31,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566866909,3,View Cart,200,,Session Users 1-31,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566866912,18,Login,302,,Session Users 1-31,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,1
+1777566866930,19,Add iPhone To Cart,302,,Session Users 1-31,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566866949,19,Add MacBook To Cart,302,,Session Users 1-31,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566866968,1,View Cart,200,,Session Users 1-31,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566866970,22,Login,302,,Session Users 1-31,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,0
+1777566866992,20,Add iPhone To Cart,302,,Session Users 1-31,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566867012,18,Add MacBook To Cart,302,,Session Users 1-31,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566867030,2,View Cart,200,,Session Users 1-31,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566867032,17,Login,302,,Session Users 1-31,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566867049,17,Add iPhone To Cart,302,,Session Users 1-31,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,17,0,1
+1777566867067,17,Add MacBook To Cart,302,,Session Users 1-31,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,17,0,0
+1777566867085,1,View Cart,200,,Session Users 1-31,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566867087,18,Login,302,,Session Users 1-31,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566867105,18,Add iPhone To Cart,302,,Session Users 1-31,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566867123,19,Add MacBook To Cart,302,,Session Users 1-31,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566867142,2,View Cart,200,,Session Users 1-31,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566868055,22,Login,302,,Session Users 1-32,,true,,191,241,1,1,http://localhost:8080/orders/login,22,0,0
+1777566868077,25,Add iPhone To Cart,302,,Session Users 1-32,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566868103,23,Add MacBook To Cart,302,,Session Users 1-32,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566868127,3,View Cart,200,,Session Users 1-32,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566868131,29,Login,302,,Session Users 1-32,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,1
+1777566868160,33,Add iPhone To Cart,302,,Session Users 1-32,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,33,0,3
+1777566868193,29,Add MacBook To Cart,302,,Session Users 1-32,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,29,0,1
+1777566868222,2,View Cart,200,,Session Users 1-32,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566868224,35,Login,302,,Session Users 1-32,,true,,110,294,1,1,http://localhost:8080/orders/login,35,0,1
+1777566868260,42,Add iPhone To Cart,302,,Session Users 1-32,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,42,0,2
+1777566868302,30,Add MacBook To Cart,302,,Session Users 1-32,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,30,0,1
+1777566868332,4,View Cart,200,,Session Users 1-32,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566868336,27,Login,302,,Session Users 1-32,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,1
+1777566868363,20,Add iPhone To Cart,302,,Session Users 1-32,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566868383,18,Add MacBook To Cart,302,,Session Users 1-32,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566868402,1,View Cart,200,,Session Users 1-32,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566868404,19,Login,302,,Session Users 1-32,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566868424,20,Add iPhone To Cart,302,,Session Users 1-32,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566868445,24,Add MacBook To Cart,302,,Session Users 1-32,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,0
+1777566868469,5,View Cart,200,,Session Users 1-32,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,5,0,1
+1777566869255,21,Login,302,,Session Users 1-33,,true,,191,241,1,1,http://localhost:8080/orders/login,21,0,1
+1777566869276,19,Add iPhone To Cart,302,,Session Users 1-33,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566869295,19,Add MacBook To Cart,302,,Session Users 1-33,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566869314,2,View Cart,200,,Session Users 1-33,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566869316,20,Login,302,,Session Users 1-33,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,0
+1777566869336,21,Add iPhone To Cart,302,,Session Users 1-33,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566869357,29,Add MacBook To Cart,302,,Session Users 1-33,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,29,0,3
+1777566869388,5,View Cart,200,,Session Users 1-33,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,5,0,0
+1777566869394,27,Login,302,,Session Users 1-33,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,0
+1777566869421,25,Add iPhone To Cart,302,,Session Users 1-33,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566869446,28,Add MacBook To Cart,302,,Session Users 1-33,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,3
+1777566869475,3,View Cart,200,,Session Users 1-33,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,2
+1777566869479,22,Login,302,,Session Users 1-33,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,0
+1777566869502,29,Add iPhone To Cart,302,,Session Users 1-33,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,29,0,0
+1777566869531,27,Add MacBook To Cart,302,,Session Users 1-33,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566869559,5,View Cart,200,,Session Users 1-33,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,5,0,2
+1777566869565,17,Login,302,,Session Users 1-33,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566869582,19,Add iPhone To Cart,302,,Session Users 1-33,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566869601,19,Add MacBook To Cart,302,,Session Users 1-33,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566869621,3,View Cart,200,,Session Users 1-33,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566870455,21,Login,302,,Session Users 1-34,,true,,191,241,1,1,http://localhost:8080/orders/login,21,0,0
+1777566870478,21,Add iPhone To Cart,302,,Session Users 1-34,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566870499,26,Add MacBook To Cart,302,,Session Users 1-34,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566870525,4,View Cart,200,,Session Users 1-34,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566870529,27,Login,302,,Session Users 1-34,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,1
+1777566870556,21,Add iPhone To Cart,302,,Session Users 1-34,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566870577,25,Add MacBook To Cart,302,,Session Users 1-34,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566870602,2,View Cart,200,,Session Users 1-34,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566870604,20,Login,302,,Session Users 1-34,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,1
+1777566870624,21,Add iPhone To Cart,302,,Session Users 1-34,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566870645,22,Add MacBook To Cart,302,,Session Users 1-34,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566870668,1,View Cart,200,,Session Users 1-34,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566870670,19,Login,302,,Session Users 1-34,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566870689,25,Add iPhone To Cart,302,,Session Users 1-34,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566870714,21,Add MacBook To Cart,302,,Session Users 1-34,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566870735,3,View Cart,200,,Session Users 1-34,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566870738,18,Login,302,,Session Users 1-34,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566870756,33,Add iPhone To Cart,302,,Session Users 1-34,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,33,0,1
+1777566870789,26,Add MacBook To Cart,302,,Session Users 1-34,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566870816,3,View Cart,200,,Session Users 1-34,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566871655,21,Login,302,,Session Users 1-35,,true,,191,241,1,1,http://localhost:8080/orders/login,21,0,1
+1777566871676,19,Add iPhone To Cart,302,,Session Users 1-35,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566871696,19,Add MacBook To Cart,302,,Session Users 1-35,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566871715,2,View Cart,200,,Session Users 1-35,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566871718,20,Login,302,,Session Users 1-35,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,0
+1777566871742,18,Add iPhone To Cart,302,,Session Users 1-35,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566871760,19,Add MacBook To Cart,302,,Session Users 1-35,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566871779,3,View Cart,200,,Session Users 1-35,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566871782,19,Login,302,,Session Users 1-35,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566871801,18,Add iPhone To Cart,302,,Session Users 1-35,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566871819,19,Add MacBook To Cart,302,,Session Users 1-35,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,2
+1777566871838,1,View Cart,200,,Session Users 1-35,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,1,0,1
+1777566871840,17,Login,302,,Session Users 1-35,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566871857,19,Add iPhone To Cart,302,,Session Users 1-35,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566871876,18,Add MacBook To Cart,302,,Session Users 1-35,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566871895,1,View Cart,200,,Session Users 1-35,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566871897,20,Login,302,,Session Users 1-35,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,0
+1777566871918,23,Add iPhone To Cart,302,,Session Users 1-35,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,0
+1777566871941,18,Add MacBook To Cart,302,,Session Users 1-35,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566871959,3,View Cart,200,,Session Users 1-35,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566872855,25,Login,302,,Session Users 1-36,,true,,191,241,1,1,http://localhost:8080/orders/login,25,0,1
+1777566872880,29,Add iPhone To Cart,302,,Session Users 1-36,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,29,0,1
+1777566872909,26,Add MacBook To Cart,302,,Session Users 1-36,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566872935,1,View Cart,200,,Session Users 1-36,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566872937,20,Login,302,,Session Users 1-36,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,0
+1777566872957,19,Add iPhone To Cart,302,,Session Users 1-36,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566872976,27,Add MacBook To Cart,302,,Session Users 1-36,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,27,0,0
+1777566873004,2,View Cart,200,,Session Users 1-36,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566873007,26,Login,302,,Session Users 1-36,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,0
+1777566873033,24,Add iPhone To Cart,302,,Session Users 1-36,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566873058,20,Add MacBook To Cart,302,,Session Users 1-36,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566873078,2,View Cart,200,,Session Users 1-36,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566873080,29,Login,302,,Session Users 1-36,,true,,110,294,1,1,http://localhost:8080/orders/login,29,0,1
+1777566873109,23,Add iPhone To Cart,302,,Session Users 1-36,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566873132,22,Add MacBook To Cart,302,,Session Users 1-36,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566873154,2,View Cart,200,,Session Users 1-36,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566873156,19,Login,302,,Session Users 1-36,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566873175,21,Add iPhone To Cart,302,,Session Users 1-36,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566873196,24,Add MacBook To Cart,302,,Session Users 1-36,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566873220,2,View Cart,200,,Session Users 1-36,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566874056,20,Login,302,,Session Users 1-37,,true,,191,241,1,1,http://localhost:8080/orders/login,20,0,1
+1777566874077,16,Add iPhone To Cart,302,,Session Users 1-37,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,16,0,0
+1777566874093,19,Add MacBook To Cart,302,,Session Users 1-37,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566874112,2,View Cart,200,,Session Users 1-37,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566874115,18,Login,302,,Session Users 1-37,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566874133,20,Add iPhone To Cart,302,,Session Users 1-37,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566874153,21,Add MacBook To Cart,302,,Session Users 1-37,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566874174,2,View Cart,200,,Session Users 1-37,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566874177,19,Login,302,,Session Users 1-37,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566874196,25,Add iPhone To Cart,302,,Session Users 1-37,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566874221,31,Add MacBook To Cart,302,,Session Users 1-37,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,31,0,1
+1777566874252,4,View Cart,200,,Session Users 1-37,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,4,0,2
+1777566874257,26,Login,302,,Session Users 1-37,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,0
+1777566874286,19,Add iPhone To Cart,302,,Session Users 1-37,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566874306,23,Add MacBook To Cart,302,,Session Users 1-37,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,0
+1777566874329,2,View Cart,200,,Session Users 1-37,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566874332,17,Login,302,,Session Users 1-37,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566874349,20,Add iPhone To Cart,302,,Session Users 1-37,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566874369,24,Add MacBook To Cart,302,,Session Users 1-37,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566874393,3,View Cart,200,,Session Users 1-37,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566875256,17,Login,302,,Session Users 1-38,,true,,191,241,1,1,http://localhost:8080/orders/login,17,0,0
+1777566875274,20,Add iPhone To Cart,302,,Session Users 1-38,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566875294,21,Add MacBook To Cart,302,,Session Users 1-38,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566875315,2,View Cart,200,,Session Users 1-38,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566875317,18,Login,302,,Session Users 1-38,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566875335,16,Add iPhone To Cart,302,,Session Users 1-38,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,16,0,0
+1777566875352,18,Add MacBook To Cart,302,,Session Users 1-38,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566875370,2,View Cart,200,,Session Users 1-38,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566875373,27,Login,302,,Session Users 1-38,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,1
+1777566875401,25,Add iPhone To Cart,302,,Session Users 1-38,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566875427,32,Add MacBook To Cart,302,,Session Users 1-38,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,32,0,0
+1777566875459,2,View Cart,200,,Session Users 1-38,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566875461,28,Login,302,,Session Users 1-38,,true,,110,294,1,1,http://localhost:8080/orders/login,28,0,1
+1777566875489,20,Add iPhone To Cart,302,,Session Users 1-38,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566875509,19,Add MacBook To Cart,302,,Session Users 1-38,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566875528,3,View Cart,200,,Session Users 1-38,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566875532,19,Login,302,,Session Users 1-38,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566875551,19,Add iPhone To Cart,302,,Session Users 1-38,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566875570,27,Add MacBook To Cart,302,,Session Users 1-38,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566875598,2,View Cart,200,,Session Users 1-38,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566876456,20,Login,302,,Session Users 1-39,,true,,191,241,1,1,http://localhost:8080/orders/login,20,0,1
+1777566876477,19,Add iPhone To Cart,302,,Session Users 1-39,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566876496,20,Add MacBook To Cart,302,,Session Users 1-39,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566876517,1,View Cart,200,,Session Users 1-39,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566876519,24,Login,302,,Session Users 1-39,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,1
+1777566876543,20,Add iPhone To Cart,302,,Session Users 1-39,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566876564,22,Add MacBook To Cart,302,,Session Users 1-39,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566876586,2,View Cart,200,,Session Users 1-39,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566876589,20,Login,302,,Session Users 1-39,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,0
+1777566876609,21,Add iPhone To Cart,302,,Session Users 1-39,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566876631,17,Add MacBook To Cart,302,,Session Users 1-39,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,17,0,0
+1777566876648,2,View Cart,200,,Session Users 1-39,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566876650,17,Login,302,,Session Users 1-39,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566876667,19,Add iPhone To Cart,302,,Session Users 1-39,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566876687,19,Add MacBook To Cart,302,,Session Users 1-39,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566876707,3,View Cart,200,,Session Users 1-39,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566876710,19,Login,302,,Session Users 1-39,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,1
+1777566876730,20,Add iPhone To Cart,302,,Session Users 1-39,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566876750,24,Add MacBook To Cart,302,,Session Users 1-39,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,24,0,1
+1777566876775,3,View Cart,200,,Session Users 1-39,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566877656,22,Login,302,,Session Users 1-40,,true,,191,241,1,1,http://localhost:8080/orders/login,22,0,0
+1777566877678,20,Add iPhone To Cart,302,,Session Users 1-40,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566877699,25,Add MacBook To Cart,302,,Session Users 1-40,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566877724,4,View Cart,200,,Session Users 1-40,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,4,0,2
+1777566877729,26,Login,302,,Session Users 1-40,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,0
+1777566877755,30,Add iPhone To Cart,302,,Session Users 1-40,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,30,0,2
+1777566877786,26,Add MacBook To Cart,302,,Session Users 1-40,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,26,0,1
+1777566877814,4,View Cart,200,,Session Users 1-40,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566877818,27,Login,302,,Session Users 1-40,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,1
+1777566877846,28,Add iPhone To Cart,302,,Session Users 1-40,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566877874,28,Add MacBook To Cart,302,,Session Users 1-40,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,28,0,2
+1777566877905,1,View Cart,200,,Session Users 1-40,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566877907,26,Login,302,,Session Users 1-40,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,0
+1777566877933,27,Add iPhone To Cart,302,,Session Users 1-40,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,0
+1777566877961,20,Add MacBook To Cart,302,,Session Users 1-40,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566877982,1,View Cart,200,,Session Users 1-40,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566877984,18,Login,302,,Session Users 1-40,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566878002,18,Add iPhone To Cart,302,,Session Users 1-40,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566878020,18,Add MacBook To Cart,302,,Session Users 1-40,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566878038,3,View Cart,200,,Session Users 1-40,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566878856,20,Login,302,,Session Users 1-41,,true,,191,241,1,1,http://localhost:8080/orders/login,20,0,1
+1777566878876,18,Add iPhone To Cart,302,,Session Users 1-41,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566878895,19,Add MacBook To Cart,302,,Session Users 1-41,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566878914,2,View Cart,200,,Session Users 1-41,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566878916,20,Login,302,,Session Users 1-41,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,1
+1777566878936,21,Add iPhone To Cart,302,,Session Users 1-41,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566878957,19,Add MacBook To Cart,302,,Session Users 1-41,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566878976,2,View Cart,200,,Session Users 1-41,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566878979,17,Login,302,,Session Users 1-41,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566878996,25,Add iPhone To Cart,302,,Session Users 1-41,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566879022,80,Add MacBook To Cart,302,,Session Users 1-41,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,80,0,2
+1777566879103,7,View Cart,200,,Session Users 1-41,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,7,0,0
+1777566879110,66,Login,302,,Session Users 1-41,,true,,110,294,1,1,http://localhost:8080/orders/login,66,0,3
+1777566879177,48,Add iPhone To Cart,302,,Session Users 1-41,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,48,0,0
+1777566879229,75,Add MacBook To Cart,302,,Session Users 1-41,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,75,0,0
+1777566879304,5,View Cart,200,,Session Users 1-41,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,5,0,1
+1777566879309,57,Login,302,,Session Users 1-41,,true,,110,294,1,1,http://localhost:8080/orders/login,57,0,1
+1777566879366,49,Add iPhone To Cart,302,,Session Users 1-41,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,49,0,1
+1777566879416,29,Add MacBook To Cart,302,,Session Users 1-41,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,29,0,0
+1777566879445,3,View Cart,200,,Session Users 1-41,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566880055,18,Login,302,,Session Users 1-42,,true,,191,241,1,1,http://localhost:8080/orders/login,18,0,1
+1777566880074,19,Add iPhone To Cart,302,,Session Users 1-42,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566880093,19,Add MacBook To Cart,302,,Session Users 1-42,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566880112,1,View Cart,200,,Session Users 1-42,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566880114,18,Login,302,,Session Users 1-42,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566880132,20,Add iPhone To Cart,302,,Session Users 1-42,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566880152,17,Add MacBook To Cart,302,,Session Users 1-42,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,17,0,1
+1777566880169,2,View Cart,200,,Session Users 1-42,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566880171,17,Login,302,,Session Users 1-42,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,1
+1777566880188,18,Add iPhone To Cart,302,,Session Users 1-42,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566880207,19,Add MacBook To Cart,302,,Session Users 1-42,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566880226,1,View Cart,200,,Session Users 1-42,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,1,0,1
+1777566880228,20,Login,302,,Session Users 1-42,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,0
+1777566880249,20,Add iPhone To Cart,302,,Session Users 1-42,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566880270,20,Add MacBook To Cart,302,,Session Users 1-42,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566880290,3,View Cart,200,,Session Users 1-42,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566880293,24,Login,302,,Session Users 1-42,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,0
+1777566880317,22,Add iPhone To Cart,302,,Session Users 1-42,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566880339,20,Add MacBook To Cart,302,,Session Users 1-42,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566880359,2,View Cart,200,,Session Users 1-42,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566881257,28,Login,302,,Session Users 1-43,,true,,191,241,1,1,http://localhost:8080/orders/login,28,0,0
+1777566881285,25,Add iPhone To Cart,302,,Session Users 1-43,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,3
+1777566881310,22,Add MacBook To Cart,302,,Session Users 1-43,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566881332,2,View Cart,200,,Session Users 1-43,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566881335,36,Login,302,,Session Users 1-43,,true,,110,294,1,1,http://localhost:8080/orders/login,36,0,1
+1777566881371,32,Add iPhone To Cart,302,,Session Users 1-43,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,32,0,1
+1777566881404,31,Add MacBook To Cart,302,,Session Users 1-43,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,31,0,1
+1777566881435,5,View Cart,200,,Session Users 1-43,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,5,0,0
+1777566881440,26,Login,302,,Session Users 1-43,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,1
+1777566881466,20,Add iPhone To Cart,302,,Session Users 1-43,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,3
+1777566881487,19,Add MacBook To Cart,302,,Session Users 1-43,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566881507,3,View Cart,200,,Session Users 1-43,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566881511,24,Login,302,,Session Users 1-43,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,1
+1777566881536,25,Add iPhone To Cart,302,,Session Users 1-43,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566881562,19,Add MacBook To Cart,302,,Session Users 1-43,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566881581,2,View Cart,200,,Session Users 1-43,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566881583,21,Login,302,,Session Users 1-43,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,1
+1777566881604,20,Add iPhone To Cart,302,,Session Users 1-43,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566881624,21,Add MacBook To Cart,302,,Session Users 1-43,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566881645,2,View Cart,200,,Session Users 1-43,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566882457,19,Login,302,,Session Users 1-44,,true,,191,241,1,1,http://localhost:8080/orders/login,19,0,0
+1777566882476,20,Add iPhone To Cart,302,,Session Users 1-44,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566882496,21,Add MacBook To Cart,302,,Session Users 1-44,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566882517,2,View Cart,200,,Session Users 1-44,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566882519,19,Login,302,,Session Users 1-44,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,1
+1777566882538,20,Add iPhone To Cart,302,,Session Users 1-44,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566882559,19,Add MacBook To Cart,302,,Session Users 1-44,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566882578,2,View Cart,200,,Session Users 1-44,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566882580,19,Login,302,,Session Users 1-44,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,1
+1777566882599,20,Add iPhone To Cart,302,,Session Users 1-44,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566882619,19,Add MacBook To Cart,302,,Session Users 1-44,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566882639,1,View Cart,200,,Session Users 1-44,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566882641,20,Login,302,,Session Users 1-44,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,0
+1777566882661,18,Add iPhone To Cart,302,,Session Users 1-44,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566882679,19,Add MacBook To Cart,302,,Session Users 1-44,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566882698,2,View Cart,200,,Session Users 1-44,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566882701,22,Login,302,,Session Users 1-44,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,0
+1777566882724,19,Add iPhone To Cart,302,,Session Users 1-44,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566882743,22,Add MacBook To Cart,302,,Session Users 1-44,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566882765,1,View Cart,200,,Session Users 1-44,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566883655,18,Login,302,,Session Users 1-45,,true,,191,241,1,1,http://localhost:8080/orders/login,18,0,1
+1777566883673,28,Add iPhone To Cart,302,,Session Users 1-45,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,28,0,1
+1777566883701,25,Add MacBook To Cart,302,,Session Users 1-45,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566883726,4,View Cart,200,,Session Users 1-45,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,4,0,2
+1777566883730,27,Login,302,,Session Users 1-45,,true,,110,294,1,1,http://localhost:8080/orders/login,27,0,0
+1777566883760,35,Add iPhone To Cart,302,,Session Users 1-45,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,35,0,0
+1777566883795,19,Add MacBook To Cart,302,,Session Users 1-45,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566883814,1,View Cart,200,,Session Users 1-45,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566883816,21,Login,302,,Session Users 1-45,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,1
+1777566883837,19,Add iPhone To Cart,302,,Session Users 1-45,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566883856,20,Add MacBook To Cart,302,,Session Users 1-45,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566883876,2,View Cart,200,,Session Users 1-45,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566883878,20,Login,302,,Session Users 1-45,,true,,110,294,1,1,http://localhost:8080/orders/login,20,0,1
+1777566883898,25,Add iPhone To Cart,302,,Session Users 1-45,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,0
+1777566883923,23,Add MacBook To Cart,302,,Session Users 1-45,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566883948,2,View Cart,200,,Session Users 1-45,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566883950,24,Login,302,,Session Users 1-45,,true,,110,294,1,1,http://localhost:8080/orders/login,24,0,0
+1777566883974,19,Add iPhone To Cart,302,,Session Users 1-45,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566883993,21,Add MacBook To Cart,302,,Session Users 1-45,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,2
+1777566884014,2,View Cart,200,,Session Users 1-45,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566884855,19,Login,302,,Session Users 1-46,,true,,191,241,1,1,http://localhost:8080/orders/login,19,0,1
+1777566884874,18,Add iPhone To Cart,302,,Session Users 1-46,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566884892,21,Add MacBook To Cart,302,,Session Users 1-46,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566884913,2,View Cart,200,,Session Users 1-46,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566884915,18,Login,302,,Session Users 1-46,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566884933,23,Add iPhone To Cart,302,,Session Users 1-46,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,23,0,0
+1777566884956,22,Add MacBook To Cart,302,,Session Users 1-46,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566884979,3,View Cart,200,,Session Users 1-46,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566884983,22,Login,302,,Session Users 1-46,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,0
+1777566885005,19,Add iPhone To Cart,302,,Session Users 1-46,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566885025,20,Add MacBook To Cart,302,,Session Users 1-46,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566885045,2,View Cart,200,,Session Users 1-46,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566885047,17,Login,302,,Session Users 1-46,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566885065,18,Add iPhone To Cart,302,,Session Users 1-46,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566885084,19,Add MacBook To Cart,302,,Session Users 1-46,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566885103,4,View Cart,200,,Session Users 1-46,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566885108,28,Login,302,,Session Users 1-46,,true,,110,294,1,1,http://localhost:8080/orders/login,28,0,0
+1777566885136,20,Add iPhone To Cart,302,,Session Users 1-46,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566885156,20,Add MacBook To Cart,302,,Session Users 1-46,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566885176,2,View Cart,200,,Session Users 1-46,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566886054,20,Login,302,,Session Users 1-47,,true,,191,241,1,1,http://localhost:8080/orders/login,20,0,1
+1777566886074,25,Add iPhone To Cart,302,,Session Users 1-47,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566886099,19,Add MacBook To Cart,302,,Session Users 1-47,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566886118,1,View Cart,200,,Session Users 1-47,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566886120,17,Login,302,,Session Users 1-47,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566886137,20,Add iPhone To Cart,302,,Session Users 1-47,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566886157,21,Add MacBook To Cart,302,,Session Users 1-47,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,1
+1777566886178,2,View Cart,200,,Session Users 1-47,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,1,0,1
+1777566886180,17,Login,302,,Session Users 1-47,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566886197,22,Add iPhone To Cart,302,,Session Users 1-47,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566886219,17,Add MacBook To Cart,302,,Session Users 1-47,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,17,0,1
+1777566886237,2,View Cart,200,,Session Users 1-47,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566886239,19,Login,302,,Session Users 1-47,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,1
+1777566886258,18,Add iPhone To Cart,302,,Session Users 1-47,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566886277,19,Add MacBook To Cart,302,,Session Users 1-47,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566886296,2,View Cart,200,,Session Users 1-47,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,0
+1777566886298,21,Login,302,,Session Users 1-47,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,0
+1777566886319,19,Add iPhone To Cart,302,,Session Users 1-47,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566886338,20,Add MacBook To Cart,302,,Session Users 1-47,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566886359,4,View Cart,200,,Session Users 1-47,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,4,0,3
+1777566887255,18,Login,302,,Session Users 1-48,,true,,191,241,1,1,http://localhost:8080/orders/login,18,0,1
+1777566887274,18,Add iPhone To Cart,302,,Session Users 1-48,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566887292,17,Add MacBook To Cart,302,,Session Users 1-48,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,17,0,0
+1777566887310,1,View Cart,200,,Session Users 1-48,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566887311,18,Login,302,,Session Users 1-48,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,1
+1777566887329,22,Add iPhone To Cart,302,,Session Users 1-48,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566887351,18,Add MacBook To Cart,302,,Session Users 1-48,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566887370,1,View Cart,200,,Session Users 1-48,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566887372,26,Login,302,,Session Users 1-48,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,0
+1777566887398,17,Add iPhone To Cart,302,,Session Users 1-48,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,17,0,1
+1777566887416,17,Add MacBook To Cart,302,,Session Users 1-48,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,17,0,0
+1777566887433,3,View Cart,200,,Session Users 1-48,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,3,0,1
+1777566887437,19,Login,302,,Session Users 1-48,,true,,110,294,1,1,http://localhost:8080/orders/login,19,0,0
+1777566887457,19,Add iPhone To Cart,302,,Session Users 1-48,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,0
+1777566887477,20,Add MacBook To Cart,302,,Session Users 1-48,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566887497,2,View Cart,200,,Session Users 1-48,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566887499,17,Login,302,,Session Users 1-48,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,0
+1777566887517,20,Add iPhone To Cart,302,,Session Users 1-48,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566887538,18,Add MacBook To Cart,302,,Session Users 1-48,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566887556,1,View Cart,200,,Session Users 1-48,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,1,0,1
+1777566888455,18,Login,302,,Session Users 1-49,,true,,191,241,1,1,http://localhost:8080/orders/login,18,0,1
+1777566888474,16,Add iPhone To Cart,302,,Session Users 1-49,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,16,0,0
+1777566888491,22,Add MacBook To Cart,302,,Session Users 1-49,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,1
+1777566888513,2,View Cart,200,,Session Users 1-49,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566888515,22,Login,302,,Session Users 1-49,,true,,110,294,1,1,http://localhost:8080/orders/login,22,0,0
+1777566888537,19,Add iPhone To Cart,302,,Session Users 1-49,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566888557,21,Add MacBook To Cart,302,,Session Users 1-49,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,21,0,0
+1777566888578,2,View Cart,200,,Session Users 1-49,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566888580,18,Login,302,,Session Users 1-49,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566888598,18,Add iPhone To Cart,302,,Session Users 1-49,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,0
+1777566888616,19,Add MacBook To Cart,302,,Session Users 1-49,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566888635,2,View Cart,200,,Session Users 1-49,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566888637,17,Login,302,,Session Users 1-49,,true,,110,294,1,1,http://localhost:8080/orders/login,17,0,1
+1777566888654,17,Add iPhone To Cart,302,,Session Users 1-49,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,17,0,1
+1777566888671,22,Add MacBook To Cart,302,,Session Users 1-49,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566888694,3,View Cart,200,,Session Users 1-49,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,3,0,0
+1777566888698,26,Login,302,,Session Users 1-49,,true,,110,294,1,1,http://localhost:8080/orders/login,26,0,0
+1777566888725,30,Add iPhone To Cart,302,,Session Users 1-49,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,30,0,0
+1777566888755,25,Add MacBook To Cart,302,,Session Users 1-49,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,25,0,1
+1777566888780,5,View Cart,200,,Session Users 1-49,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,5,0,1
+1777566889657,21,Login,302,,Session Users 1-50,,true,,191,241,1,1,http://localhost:8080/orders/login,21,0,0
+1777566889679,19,Add iPhone To Cart,302,,Session Users 1-50,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566889698,22,Add MacBook To Cart,302,,Session Users 1-50,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566889720,2,View Cart,200,,Session Users 1-50,text,true,,5304,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566889722,21,Login,302,,Session Users 1-50,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,2
+1777566889743,19,Add iPhone To Cart,302,,Session Users 1-50,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,19,0,1
+1777566889762,20,Add MacBook To Cart,302,,Session Users 1-50,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,1
+1777566889782,4,View Cart,200,,Session Users 1-50,text,true,,5536,176,1,1,http://localhost:8080/orders/cart,4,0,1
+1777566889787,18,Login,302,,Session Users 1-50,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,0
+1777566889805,27,Add iPhone To Cart,302,,Session Users 1-50,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,27,0,1
+1777566889832,23,Add MacBook To Cart,302,,Session Users 1-50,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,23,0,1
+1777566889855,2,View Cart,200,,Session Users 1-50,text,true,,5768,176,1,1,http://localhost:8080/orders/cart,2,0,1
+1777566889858,21,Login,302,,Session Users 1-50,,true,,110,294,1,1,http://localhost:8080/orders/login,21,0,0
+1777566889879,18,Add iPhone To Cart,302,,Session Users 1-50,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,18,0,1
+1777566889897,20,Add MacBook To Cart,302,,Session Users 1-50,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,20,0,0
+1777566889918,1,View Cart,200,,Session Users 1-50,text,true,,6001,176,1,1,http://localhost:8080/orders/cart,1,0,0
+1777566889920,18,Login,302,,Session Users 1-50,,true,,110,294,1,1,http://localhost:8080/orders/login,18,0,1
+1777566889938,17,Add iPhone To Cart,302,,Session Users 1-50,,true,,111,293,1,1,http://localhost:8080/orders/cart/add,17,0,1
+1777566889956,22,Add MacBook To Cart,302,,Session Users 1-50,,true,,111,291,1,1,http://localhost:8080/orders/cart/add,22,0,0
+1777566889978,2,View Cart,200,,Session Users 1-50,text,true,,6233,176,1,1,http://localhost:8080/orders/cart,2,0,1

@@ -44,3 +44,250 @@ body {
     from { transform: translateX(100%); }
     to { transform: translateX(-100%); }
 }
+
+/* ===== ERICMANNY POS LAB UI UPGRADE ===== */
+
+body {
+  background:
+    linear-gradient(rgba(2, 6, 23, 0.72), rgba(2, 6, 23, 0.82)),
+    url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=80") center center / cover fixed !important;
+}
+
+.sidebar {
+  overflow-y: auto !important;
+  max-height: 100vh !important;
+  background: rgba(2, 6, 23, 0.92) !important;
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px 20px;
+  margin: 6px 12px;
+  border-radius: 12px;
+  color: #e5e7eb !important;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all .2s ease;
+}
+
+.sidebar a:hover {
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  color: white !important;
+  transform: translateX(3px);
+}
+
+.section-label,
+.sidebar .section-label {
+  color: #94a3b8 !important;
+  font-size: 12px;
+  letter-spacing: .12em;
+  font-weight: 900;
+  margin: 22px 20px 8px 20px;
+}
+
+.content,
+.main,
+.main-content {
+  background: rgba(15, 23, 42, 0.54) !important;
+  backdrop-filter: blur(5px);
+}
+
+.hero,
+.banner {
+  background:
+    linear-gradient(90deg, rgba(37,99,235,.92), rgba(124,58,237,.88)),
+    url("https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=1600&q=80") center center / cover !important;
+  border-radius: 24px !important;
+  box-shadow: 0 24px 60px rgba(0,0,0,.28);
+}
+
+.card,
+.table-card,
+.lab-card,
+.heap-card,
+.lab-section,
+.heap-section {
+  border-radius: 22px !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,.20) !important;
+}
+
+button,
+.lab-btn,
+.heap-btn {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 22px rgba(0,0,0,.14);
+}
+
+input,
+.lab-input,
+.heap-input {
+  border-radius: 12px !important;
+}
+
+/* Make the sidebar usable on smaller screens */
+@media (max-height: 820px) {
+  .sidebar a {
+    padding: 9px 18px;
+    margin: 4px 10px;
+    font-size: 14px;
+  }
+
+  .section-label,
+  .sidebar .section-label {
+    margin-top: 14px;
+  }
+}
+
+/* force full sidebar scroll and compact menu */
+.sidebar {
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow-y: auto !important;
+  padding-bottom: 80px !important;
+}
+
+.sidebar a {
+  padding: 8px 18px !important;
+  margin: 3px 10px !important;
+  font-size: 14px !important;
+}
+
+.section-label,
+.sidebar .section-label {
+  margin: 12px 20px 6px 20px !important;
+  font-size: 11px !important;
+}
+
+/* ===== FINAL SIDEBAR FIT FIX ===== */
+.sidebar {
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow-y: auto !important;
+  padding-top: 18px !important;
+  padding-bottom: 120px !important;
+}
+
+.sidebar a {
+  display: block !important;
+  padding: 7px 18px !important;
+  margin: 2px 10px !important;
+  font-size: 13px !important;
+  line-height: 1.15 !important;
+}
+
+.sidebar .brand,
+.brand {
+  margin-bottom: 12px !important;
+}
+
+.brand-title {
+  font-size: 22px !important;
+  line-height: 1.05 !important;
+}
+
+.brand-subtitle {
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+}
+
+.section-label,
+.sidebar .section-label {
+  margin: 10px 18px 5px 18px !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+}
+
+/* ===== FINAL SIDEBAR LAYOUT FIX ===== */
+
+.sidebar {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  overflow-y: auto !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  padding-bottom: 20px !important;
+}
+
+.sidebar .platform-section {
+  margin-top: auto !important;
+  padding-top: 12px !important;
+}
+
+.sidebar a {
+  flex-shrink: 0 !important;
+}
+
+
+/* compact sidebar final */
+.sidebar {
+  overflow-y: auto !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  padding-bottom: 40px !important;
+}
+
+.sidebar a {
+  padding: 6px 16px !important;
+  margin: 2px 10px !important;
+  font-size: 13px !important;
+  line-height: 1.1 !important;
+}
+
+.brand-title {
+  font-size: 21px !important;
+  line-height: 1.05 !important;
+}
+
+.brand-subtitle {
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+}
+
+.section-label {
+  margin: 9px 18px 4px 18px !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+}
+
+.hero-logout {
+  display: inline-block;
+  margin-left: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.95);
+  color: white !important;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.hero-logout:hover {
+  background: #dc2626;
+}
+
+/* GLOBAL HERO LOGOUT BUTTON */
+.user-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.hero-logout {
+  display: inline-block !important;
+  padding: 8px 16px !important;
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  box-shadow: 0 10px 24px rgba(239, 68, 68, .35) !important;
+}
+
+.hero-logout:hover {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+}

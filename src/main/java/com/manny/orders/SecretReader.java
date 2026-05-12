@@ -1,7 +1,6 @@
 package com.manny.orders;
 
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.FileInputStream;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyStore;
@@ -9,9 +8,16 @@ import java.security.KeyStore;
 public class SecretReader {
 
     public static String getStripeSecretKey() throws Exception {
+        return getSecret("stripe.secret");
+    }
+
+    public static String getStripeWebhookSecret() throws Exception {
+        return getSecret("stripe.webhook.secret");
+    }
+
+    private static String getSecret(String alias) throws Exception {
         String path = getenvRequired("STRIPE_KEYSTORE_PATH");
         String type = getenvRequired("STRIPE_KEYSTORE_TYPE");
-        String alias = getenvRequired("STRIPE_KEY_ALIAS");
         String password = getenvRequired("STRIPE_KEYSTORE_PASSWORD");
 
         KeyStore keyStore = KeyStore.getInstance(type);

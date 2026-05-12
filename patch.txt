@@ -1,0 +1,38 @@
+            SessionCreateParams.Builder paramsBuilder =
+                    SessionCreateParams.builder()
+                            .setMode(SessionCreateParams.Mode.PAYMENT)
+                            .setSuccessUrl(baseUrl + "/checkout-success?session_id={CHECKOUT_SESSION_ID}")
+                            .setCancelUrl(baseUrl + "/checkout-cancel?session_id={CHECKOUT_SESSION_ID}")
+                            .setAllowPromotionCodes(true);
+
+            // 🔥 ADD METADATA
+            paramsBuilder.putMetadata("user", session.getAttribute("user").toString());
+
+            int index = 0;
+            for (CartItem item : cart) {
+                long unitAmountCents = item.unitPrice.multiply(java.math.BigDecimal.valueOf(100)).longValue();
+
+                paramsBuilder.addLineItem(
+                        SessionCreateParams.LineItem.builder()
+                                .setQuantity((long) item.quantity)
+                                .setPriceData(
+                                        SessionCreateParams.LineItem.PriceData.builder()
+                                                .setCurrency("usd")
+                                                .setUnitAmount(unitAmountCents)
+                                                .setProductData(
+                                                        SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                                                                .setName(item.itemName)
+                                                                .setDescription(item.sku)
+                                                                .build()
+                                                )
+                                                .build()
+                                )
+                                .build()
+                );
+
+                // 🔥 STORE CART IN METADATA
+                paramsBuilder.putMetadata("item_" + index,
+                        item.sku + "|" + item.itemName + "|" + item.quantity + "|" + item.unitPrice);
+
+                index++;
+            }

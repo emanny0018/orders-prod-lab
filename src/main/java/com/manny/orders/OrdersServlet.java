@@ -84,24 +84,11 @@ public class OrdersServlet extends HttpServlet {
             out.println("<div><label>Product</label><select id='skuSelect' name='sku' required onchange='updatePrice()' style='width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;'>");
             out.println("<option value='' data-price='0'>Select product</option>");
 
-            try (PreparedStatement ps = conn.prepareStatement(
-                    "SELECT sku, item_name, category, stock_quantity, unit_price FROM inventory ORDER BY category, item_name");
-                 ResultSet products = ps.executeQuery()) {
-
-                while (products.next()) {
-                    String sku = products.getString("sku");
-                    String itemName = products.getString("item_name");
-                    String category = products.getString("category");
-                    int stock = products.getInt("stock_quantity");
-                    String price = products.getBigDecimal("unit_price").toString();
-
-                    String label = category + " - " + itemName + " (" + sku + ") | Stock: " + stock + " | $" + price;
-
-                    if (stock <= 0) {
-                        out.println("<option disabled value='" + sku + "' data-price='" + price + "'>" + label + " OUT OF STOCK</option>");
-                    } else {
-                        out.println("<option value='" + sku + "' data-price='" + price + "'>" + label + "</option>");
-                    }
+            for (ProductCatalog.Product product : ProductCatalog.getProducts(conn)) {
+                if (product.stockQuantity <= 0) {
+                    out.println("<option disabled value='" + product.sku + "' data-price='" + product.unitPrice + "'>" + product.label() + " OUT OF STOCK</option>");
+                } else {
+                    out.println("<option value='" + product.sku + "' data-price='" + product.unitPrice + "'>" + product.label() + "</option>");
                 }
             }
 
@@ -129,24 +116,11 @@ function updatePrice() {
             out.println("<form action='cart/add' method='post' style='display:grid;grid-template-columns:3fr 1fr auto;gap:12px;align-items:end;'>");
             out.println("<div><label>Product</label><select name='sku' required style='width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;'>");
 
-            try (PreparedStatement ps = conn.prepareStatement(
-                    "SELECT sku, item_name, category, stock_quantity, unit_price FROM inventory ORDER BY category, item_name");
-                 ResultSet products = ps.executeQuery()) {
-
-                while (products.next()) {
-                    String sku = products.getString("sku");
-                    String itemName = products.getString("item_name");
-                    String category = products.getString("category");
-                    int stock = products.getInt("stock_quantity");
-                    String price = products.getBigDecimal("unit_price").toString();
-
-                    String label = category + " - " + itemName + " (" + sku + ") | Stock: " + stock + " | $" + price;
-
-                    if (stock <= 0) {
-                        out.println("<option disabled value='" + sku + "'>" + label + " OUT OF STOCK</option>");
-                    } else {
-                        out.println("<option value='" + sku + "'>" + label + "</option>");
-                    }
+            for (ProductCatalog.Product product : ProductCatalog.getProducts(conn)) {
+                if (product.stockQuantity <= 0) {
+                    out.println("<option disabled value='" + product.sku + "'>" + product.label() + " OUT OF STOCK</option>");
+                } else {
+                    out.println("<option value='" + product.sku + "'>" + product.label() + "</option>");
                 }
             }
 

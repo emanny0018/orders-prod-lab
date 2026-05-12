@@ -51,6 +51,7 @@ public class InventoryEventConsumer {
                     int updated = ps.executeUpdate();
 
                     if (updated == 1) {
+                        ProductCatalog.invalidate();
                         System.out.println("INVENTORY_UPDATED orderId=" + orderId + " sku=" + sku + " qty=" + quantity);
                         channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
                     } else {

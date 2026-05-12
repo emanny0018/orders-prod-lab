@@ -217,13 +217,20 @@ a { color:#2563eb; font-weight:800; text-decoration:none; }
   <div class="nav-section">Business Services</div>
   <a href="orders">Orders Command Center</a>
   <a href="cart">Shopping Cart</a>
+  <a href="sessions">Session Diagnostics</a>
   <a href="inventory">Inventory Control</a>
   <a href="payments">Payments & Settlements</a>
+  <a href="heap">Heap Leak Control</a>
+  <a href="cache-pressure">Cache Pressure Control</a>
+  <a href="queue-pressure">Queue Pressure Control</a>
+  <a href="recovery-control">Recovery Control Center</a>
+  <div class="section-label">PLATFORM</div>
+  <a href="health">System Health</a>
+  <a href="logout">Logout</a>
+  <div class="section-label">REPORTING</div>
   <a href="reports">Reports & Analytics</a>
 
   <div class="nav-section">Platform</div>
-  <a href="health">System Health</a>
-  <a href="logout">Logout</a>
 </div>
 """);
     }
@@ -236,7 +243,7 @@ a { color:#2563eb; font-weight:800; text-decoration:none; }
         out.println("<section class='hero'>");
         out.println("<h1>" + title + "</h1>");
         out.println("<div class='subtitle'>" + subtitle + "</div>");
-        out.println("<div class='user-chip'>Signed in as <b>" + user + "</b></div>");
+  out.println("<div class=\"user-pill\">Signed in as <b>" + user + "</b> <a href=\"logout\" style=\"display:inline-block;margin-left:18px;padding:8px 16px;background:#ef4444;color:#ffffff;font-weight:900;border-radius:999px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.25);\">Logout</a></div>");
         out.println("</section>");
     }
 

@@ -5,4 +5,48 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>heap</servlet-name>
+        <servlet-class>com.manny.orders.HeapLeakControlServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>heap</servlet-name>
+        <url-pattern>/heap</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>cachePressure</servlet-name>
+        <servlet-class>com.manny.orders.CachePressureServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>cachePressure</servlet-name>
+        <url-pattern>/cache-pressure</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>queuePressure</servlet-name>
+        <servlet-class>com.manny.orders.QueuePressureServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>queuePressure</servlet-name>
+        <url-pattern>/queue-pressure</url-pattern>
+    </servlet-mapping>
+
+    <listener>
+        <listener-class>com.manny.orders.SessionRegistry</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>recoveryControl</servlet-name>
+        <servlet-class>com.manny.orders.RecoveryControlServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>recoveryControl</servlet-name>
+        <url-pattern>/recovery-control</url-pattern>
+    </servlet-mapping>
+
 </web-app>
