@@ -2,6 +2,7 @@ target/
 *.log
 *.hprof
 *.jfr
+*.jtl
 *.class
 node_modules/
 .DS_Store
