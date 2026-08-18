@@ -5,15 +5,32 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Db {
-    private static final String URL = "jdbc:postgresql://localhost:5432/ordersdb";
-    private static final String USER = "orders_user";
-    private static final String PASS = "orders_pass";
+
+    private static final String URL =
+        System.getenv().getOrDefault(
+            "DB_URL",
+            "jdbc:postgresql://localhost:5432/ordersdb"
+        );
+
+    private static final String USER =
+        System.getenv().getOrDefault(
+            "DB_USER",
+            "orders_user"
+        );
+
+    private static final String PASS =
+        System.getenv().getOrDefault(
+            "DB_PASSWORD",
+            "orders_pass"
+        );
 
     static {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("PostgreSQL JDBC driver not found in WAR", e);
+            throw new RuntimeException(
+                "PostgreSQL JDBC driver not found in WAR", e
+            );
         }
     }
 

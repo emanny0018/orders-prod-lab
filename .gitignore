@@ -1,8 +1,37 @@
+# Maven build output
 target/
-*.log
-*.hprof
-*.jfr
-*.jtl
 *.class
-node_modules/
+
+# Python / Locust environments
+__pycache__/
+*.py[cod]
+locust-venv/
+.venv/
+venv/
+
+# Runtime output
+nohup.out
+*.log
+
+# Load-test results
+*.jtl
+
+# JVM diagnostics
+*.jfr
+*.hprof
+hs_err_pid*
+
+# PostgreSQL runtime backups
+database/backups/
+*.dump
+*.backup
+
+# Secrets / local environment
+.env
+.env.*
+*.secret
+
+# OS / IDE
 .DS_Store
+.idea/
+.vscode/
