@@ -134,3 +134,48 @@ ALTER TABLE payments OWNER TO orders_user;
 ALTER TABLE sale_items OWNER TO orders_user;
 ALTER TABLE checkout_attempts OWNER TO orders_user;
 
+
+-- ========================================================
+-- Functional observability
+-- ========================================================
+
+CREATE TABLE IF NOT EXISTS app_sessions (
+    session_id           VARCHAR(128) PRIMARY KEY,
+    username             VARCHAR(100),
+    created_at           TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    last_seen_at         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    ended_at             TIMESTAMP,
+    status               VARCHAR(30) NOT NULL DEFAULT 'ACTIVE',
+    request_count        BIGINT NOT NULL DEFAULT 0,
+    last_method          VARCHAR(20),
+    last_uri             VARCHAR(500),
+    last_http_status     INTEGER,
+    last_duration_ms     BIGINT,
+    last_thread          VARCHAR(200),
+    last_db_backend_pid  INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS app_request_history (
+    id                   BIGSERIAL PRIMARY KEY,
+    request_id           VARCHAR(64) NOT NULL,
+    session_id           VARCHAR(128),
+    username             VARCHAR(100),
+    request_time         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    method               VARCHAR(20),
+    uri                  VARCHAR(500),
+    http_status          INTEGER,
+    duration_ms          BIGINT,
+    thread_name          VARCHAR(200),
+    remote_addr          VARCHAR(100),
+    db_backend_pid       INTEGER,
+    error_class          VARCHAR(300)
+);
+
+CREATE INDEX IF NOT EXISTS idx_request_history_session
+    ON app_request_history(session_id);
+
+CREATE INDEX IF NOT EXISTS idx_request_history_time
+    ON app_request_history(request_time);
+
+CREATE INDEX IF NOT EXISTS idx_request_history_uri
+    ON app_request_history(uri);

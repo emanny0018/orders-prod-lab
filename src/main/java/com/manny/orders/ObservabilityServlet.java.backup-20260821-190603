@@ -1,0 +1,205 @@
+package com.manny.orders;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
+import redis.clients.jedis.Jedis;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.ConnectionFactory;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryUsage;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.sql.*;
+import java.time.Duration;
+import java.time.Instant;
+
+@WebServlet("/observability")
+public class ObservabilityServlet extends HttpServlet {
+
+    private String esc(String v) {
+        if (v == null) return "";
+        return v.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;").replace("\"","&quot;");
+    }
+
+    private String money(java.math.BigDecimal v) {
+        return v == null ? "—" : "$" + v.toPlainString();
+    }
+
+    private String liveHealth(String lifecycle, Timestamp lastSeen) {
+        if (!"ACTIVE".equalsIgnoreCase(lifecycle)) return "NOT ACTIVE";
+        if (lastSeen == null) return "STALE";
+        return Duration.between(lastSeen.toInstant(), Instant.now()).getSeconds() <= 120
+                ? "HEALTHY" : "STALE";
+    }
+
+    private String lc(String v) {
+        if ("ACTIVE".equalsIgnoreCase(v)) return "life-active";
+        if ("ABANDONED_ON_RESTART".equalsIgnoreCase(v)) return "life-restart";
+        return "life-ended";
+    }
+
+    private String hc(String v) {
+        if ("HEALTHY".equals(v)) return "health-good";
+        if ("STALE".equals(v)) return "health-stale";
+        return "health-off";
+    }
+
+    private void metric(PrintWriter out,String icon,String title,String value,String detail,boolean good) {
+        out.println("<div class='metric'><div class='metric-icon'>" + icon + "</div><div class='metric-title'>" +
+                esc(title) + "</div><div class='metric-value " + (good ? "good" : "bad") + "'>" +
+                esc(value) + "</div><div class='metric-detail'>" + esc(detail) + "</div></div>");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+
+        resp.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = resp.getWriter();
+        String ctx = req.getContextPath();
+
+        int dbUp=0,backendPid=0;
+        long liveSessions=0,allSessions=0,requests=0,http5xx=0;
+        double avgMs=0;
+
+        try (Connection c=Db.getConnection(); Statement st=c.createStatement();
+             ResultSet rs=st.executeQuery("""
+                 SELECT pg_backend_pid(),
+                   (SELECT COUNT(*) FROM app_sessions WHERE status='ACTIVE'
+                      AND last_seen_at > CURRENT_TIMESTAMP - INTERVAL '2 minutes'),
+                   (SELECT COUNT(*) FROM app_sessions),
+                   (SELECT COUNT(*) FROM app_request_history),
+                   (SELECT COUNT(*) FROM app_request_history WHERE http_status>=500),
+                   COALESCE((SELECT AVG(duration_ms) FROM app_request_history),0)
+                 """)) {
+            rs.next(); dbUp=1; backendPid=rs.getInt(1); liveSessions=rs.getLong(2);
+            allSessions=rs.getLong(3); requests=rs.getLong(4); http5xx=rs.getLong(5); avgMs=rs.getDouble(6);
+        } catch(Exception ignored){}
+
+        int redisUp=0; long redisKeys=0;
+        try(Jedis j=new Jedis("localhost",6379)){redisUp="PONG".equalsIgnoreCase(j.ping())?1:0;redisKeys=j.dbSize();}catch(Exception ignored){}
+
+        int rabbitUp=0; long rabbitReady=0,rabbitConsumers=0;
+        try{
+            ConnectionFactory f=new ConnectionFactory();f.setHost("localhost");f.setUsername("guest");f.setPassword("guest");
+            try(com.rabbitmq.client.Connection c=f.newConnection();Channel ch=c.createChannel()){
+                AMQP.Queue.DeclareOk q=ch.queueDeclarePassive("orders.events");
+                rabbitReady=q.getMessageCount();rabbitConsumers=q.getConsumerCount();rabbitUp=1;
+            }
+        }catch(Exception ignored){}
+
+        int threads=ManagementFactory.getThreadMXBean().getThreadCount();
+        MemoryUsage heap=ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
+        long heapUsed=heap.getUsed()/1024/1024, heapMax=heap.getMax()/1024/1024;
+        long upSec=ManagementFactory.getRuntimeMXBean().getUptime()/1000;
+        boolean appHealthy=dbUp==1&&redisUp==1&&rabbitUp==1&&http5xx==0;
+
+        out.println("""
+<!doctype html><html><head><meta charset="UTF-8"><meta http-equiv="refresh" content="10">
+<title>Orders Observability</title>
+<style>
+:root{--cyan:#67e8f9;--green:#4ade80;--amber:#fbbf24;--red:#fb7185}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:#e8f2ff;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 7%,#0c4a6e55,transparent 27%),radial-gradient(circle at 90% 12%,#5b21b655,transparent 30%),linear-gradient(135deg,#020617,#071426 48%,#020617);background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(#38bdf809 1px,transparent 1px),linear-gradient(90deg,#38bdf809 1px,transparent 1px);background-size:42px 42px}
+.shell{width:min(1720px,96%);margin:auto;padding:22px 0 65px}.top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;margin-bottom:16px;border-radius:15px;background:#020617d9;border:1px solid #7dd3fc26}.brand{font-weight:950;letter-spacing:.11em}.dot{display:inline-block;width:9px;height:9px;margin-right:9px;border-radius:50%;background:#4ade80;box-shadow:0 0 18px #4ade80}.nav{display:flex;gap:8px}.nav a{padding:8px 12px;border-radius:9px;text-decoration:none;color:#dbeafe;background:#0f172ad9;border:1px solid #94a3b82b;font-size:11px;font-weight:900}
+.hero{padding:36px;margin-bottom:20px;border-radius:26px;border:1px solid #38bdf833;background:linear-gradient(110deg,#020617fa,#082f49d4,#1e1b4bd4);box-shadow:0 30px 80px #0006}.kicker{color:#67e8f9;font-size:11px;font-weight:950;letter-spacing:.22em}.title{margin:9px 0;font-size:clamp(38px,5vw,72px);line-height:.94;font-weight:950;background:linear-gradient(90deg,#fff,#7dd3fc,#c4b5fd);-webkit-background-clip:text;color:transparent}.copy{max-width:1000px;color:#b8c9df;line-height:1.7}.pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}.pill{padding:8px 12px;border-radius:999px;border:1px solid #94a3b833;background:#0f172ab8;font-size:11px;font-weight:850}
+.section{margin:22px 0;padding:19px;border-radius:18px;background:#020617c7;border:1px solid #7dd3fc26;box-shadow:0 18px 50px #0004}.section h2{margin:0 0 7px;color:#f8fafc;font-size:21px}.note{color:#8ea4bf;font-size:12px;line-height:1.6;margin-bottom:14px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px}.metric{min-height:145px;padding:18px;border-radius:16px;background:linear-gradient(145deg,#0f172aee,#020617f2);border:1px solid #94a3b824}.metric-icon{font-size:24px}.metric-title{margin-top:14px;color:#7890ae;text-transform:uppercase;font-size:10px;font-weight:900}.metric-value{margin-top:5px;font-size:22px;font-weight:950}.metric-detail{margin-top:7px;color:#6f86a3;font-size:11px}.good{color:#86efac}.bad{color:#fda4af}
+.states{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:11px}.state{padding:17px;border-radius:14px;background:#07111f;border:1px solid #94a3b824}.state h3{margin:0 0 8px;font-size:13px}.state p,.state li{color:#b8c9df;font-size:11px;line-height:1.55}.state ul{padding-left:18px}.green{border-color:#4ade8059}.green h3{color:#86efac}.amber{border-color:#fbbf2466}.amber h3{color:#fde68a}.blue{border-color:#60a5fa66}.blue h3{color:#93c5fd}.purple{border-color:#c084fc66}.purple h3{color:#d8b4fe}
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.step{position:relative;padding:15px 10px;min-height:155px;text-align:center;border-radius:14px;background:#07111f;border:1px solid #38bdf826}.step:not(:last-child):after{content:"›";position:absolute;right:-10px;top:42%;color:#38bdf8;font-size:25px}.num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#67e8f9;color:#020617;font-weight:950;margin-bottom:8px}.step b{display:block;color:#f8fafc;font-size:11px;margin-bottom:7px}.step span{color:#8ea4bf;font-size:10px;line-height:1.5}
+.tablewrap{overflow-x:auto;border-radius:14px;border:1px solid #94a3b824;background:#030a15}table{width:100%;min-width:1100px;border-collapse:collapse;background:#030a15;color:#d5e3f3;font-size:11px}th{padding:11px 12px;text-align:left;background:#0b1628;color:#7dd3fc;text-transform:uppercase;font-size:9px}td{padding:11px 12px;background:#050d19;color:#cbd5e1;border-bottom:1px solid #94a3b815}tr:nth-child(even) td{background:#07111f}tr:hover td{background:#0b1b30}a{color:#7dd3fc;text-decoration:none;font-weight:800}code{color:#93c5fd;font-size:10px}
+.badge{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:9px;font-weight:900;white-space:nowrap}.life-active,.health-good{color:#86efac;background:#22c55e1c;border:1px solid #22c55e45}.health-stale{color:#fde68a;background:#f59e0b1c;border:1px solid #f59e0b47}.life-ended,.health-off{color:#cbd5e1;background:#94a3b817;border:1px solid #94a3b833}.life-restart{color:#d8b4fe;background:#7c3aed1f;border:1px solid #8b5cf64d}.txpass{color:#86efac}.txfail{color:#fda4af}
+.help{margin-top:13px;padding:13px 15px;border-radius:11px;background:#06101d;border:1px solid #94a3b820;color:#9fb1c8;font-size:11px;line-height:1.65}
+@media(max-width:1000px){.flow{grid-template-columns:1fr 1fr}.step:after{display:none}.top{flex-direction:column;align-items:flex-start}.hero{padding:25px}}
+</style></head><body><div class="shell"><div class="top"><div class="brand"><span class="dot"></span>ORDERS · OBSERVABILITY</div><div class="nav">
+""");
+        out.println("<a href='"+ctx+"/orders'>ORDERS</a><a href='"+ctx+"/observability'>DASHBOARD</a><a href='"+ctx+"/app-metrics'>RAW METRICS</a></div></div>");
+        out.println("""
+<div class="hero"><div class="kicker">END-TO-END APPLICATION EXECUTION INTELLIGENCE</div><div class="title">APPLICATION<br>OBSERVABILITY</div><div class="copy">Start with runtime health, then session lifecycle, then the request trace. Click a worker thread to inspect only that live JVM thread's current stack, CPU time and locks without taking a full JVM thread dump.</div><div class="pills"><span class="pill"><span class="dot"></span>LIVE RUNTIME</span><span class="pill">PERSISTENT HISTORY</span><span class="pill">CLICKABLE JVM THREADS</span><span class="pill">AUTO REFRESH · 10s</span></div></div>
+<div class="section"><h2>Current Runtime Health</h2><div class="note">Current probes from this Tomcat/JVM runtime. Historical session records below are intentionally separate.</div><div class="metrics">
+""");
+        metric(out,"◉","Application",appHealthy?"UP":"DEGRADED",appHealthy?"Core probes healthy":"One or more checks need attention",appHealthy);
+        metric(out,"🗄","PostgreSQL",dbUp==1?"UP":"DOWN",dbUp==1?"Probe backend PID "+backendPid:"Database probe failed",dbUp==1);
+        metric(out,"⚡","Redis",redisUp==1?"UP":"DOWN",redisUp==1?redisKeys+" keys":"Cache probe failed",redisUp==1);
+        metric(out,"🐇","RabbitMQ",rabbitUp==1?"UP":"DOWN",rabbitUp==1?rabbitReady+" ready · "+rabbitConsumers+" consumers":"Queue probe failed",rabbitUp==1);
+        metric(out,"👤","Live Sessions",Long.toString(liveSessions),allSessions+" persistent histories",true);
+        metric(out,"🌐","Requests",Long.toString(requests),String.format("%.1f ms average",avgMs),true);
+        metric(out,"🧵","JVM Threads",Integer.toString(threads),"Current live Java threads",true);
+        metric(out,"🧠","Heap",heapUsed+" MB",heapMax+" MB maximum",true);
+        metric(out,"⏱","JVM Uptime",(upSec/3600)+"h "+((upSec/60)%60)+"m","Current runtime",true);
+        metric(out,"🚨","HTTP 5xx",Long.toString(http5xx),"Persisted server errors",http5xx==0);
+        out.println("</div></div>");
+
+        out.println("""
+<div class="section"><h2>Session Health — What Every State Means</h2><div class="note">Lifecycle tells what happened to the HttpSession. Live Health tells whether the session is usable in the current Tomcat runtime. PostgreSQL keeps the history after the session dies.</div><div class="states">
+<div class="state green"><h3>● ACTIVE + RECENT = HEALTHY</h3><p>The HttpSession exists in this Tomcat runtime and recent HTTP activity proves the client is using it.</p><ul><li>JSESSIONID is currently valid.</li><li>Tomcat owns the session in memory.</li><li>Recent request evidence is under two minutes old.</li></ul></div>
+<div class="state amber"><h3>● ACTIVE + NO RECENT REQUESTS = STALE</h3><p>Tomcat still considers the session valid, but the client has not made a recent request.</p><ul><li>User may simply be idle.</li><li>Not automatically a failure.</li><li>It can become active again before timeout/destruction.</li></ul></div>
+<div class="state blue"><h3>● DESTROYED = ENDED NORMALLY</h3><p>Tomcat intentionally removed the session.</p><ul><li>Logout, timeout, invalidation, or normal destruction.</li><li>No longer live in Tomcat memory.</li><li>History remains for troubleshooting.</li></ul></div>
+<div class="state purple"><h3>● ABANDONED_ON_RESTART = RESTART TERMINATED</h3><p>Tomcat/application restarted while the session was active.</p><ul><li>Old JVM/in-memory session disappeared.</li><li>Live Health must be NOT ACTIVE.</li><li>A later browser request creates a new session.</li></ul></div>
+</div></div>
+
+<div class="section"><h2>Application Execution Flow — From Tomcat Start to Response</h2><div class="note">One logical session can use many worker threads and many database backend processes across its lifetime.</div><div class="flow">
+<div class="step"><div class="num">1</div><b>TOMCAT / JVM START</b><span>JVM starts, WAR deploys, connector opens, listeners initialize. Orphaned ACTIVE rows are marked ABANDONED_ON_RESTART.</span></div>
+<div class="step"><div class="num">2</div><b>HTTP ARRIVES</b><span>Tomcat accepts the request and assigns an available http-nio worker.</span></div>
+<div class="step"><div class="num">3</div><b>SESSION RESOLUTION</b><span>Tomcat reads JSESSIONID. Existing session is reused or a new HttpSession is created.</span></div>
+<div class="step"><div class="num">4</div><b>SERVLET / JVM THREAD</b><span>Servlet executes on the assigned worker. Thread name and JVM TID are captured.</span></div>
+<div class="step"><div class="num">5</div><b>DEPENDENCIES</b><span>Application can borrow JDBC, query PostgreSQL, use Redis, publish RabbitMQ, or call Stripe.</span></div>
+<div class="step"><div class="num">6</div><b>TELEMETRY</b><span>Request ID, session, URI, status, latency, worker, JVM TID and PostgreSQL PID are persisted.</span></div>
+<div class="step"><div class="num">7</div><b>RESPONSE / REUSE</b><span>Response returns. Worker goes back to the pool. Session remains, idles, ends, or is lost on restart.</span></div>
+</div><div class="help"><b>Thread inspection:</b> click a worker/TID below. You will get that one thread's live Java stack, state, CPU time and locks. This avoids a full thread dump. Because Tomcat reuses workers, a live stack clicked later is not automatically the historical stack that existed during an old request.</div></div>
+""");
+
+        out.println("<div class='section'><h2>Recent Business Transactions</h2><div class='note'>Click a TX ID for the complete transaction trace.</div><div class='tablewrap'><table><tr><th>Transaction</th><th>User</th><th>HTTP Session</th><th>Expected</th><th>Stripe</th><th>Database</th><th>Status</th><th>Started</th><th>Completed</th></tr>");
+        try(Connection c=Db.getConnection();PreparedStatement ps=c.prepareStatement("""
+            SELECT correlation_id,username,http_session_id,expected_amount,stripe_amount,database_amount,status,started_at,completed_at
+            FROM app_transactions ORDER BY started_at DESC LIMIT 50
+            """);ResultSet rs=ps.executeQuery()){
+            while(rs.next()){
+                String tx=rs.getString(1), status=rs.getString(7);
+                String url=ctx+"/transaction-trace?id="+URLEncoder.encode(tx,StandardCharsets.UTF_8);
+                out.println("<tr><td><a href='"+url+"'><code>"+esc(tx)+"</code></a></td><td>"+esc(rs.getString(2))+"</td><td><code>"+esc(rs.getString(3))+"</code></td><td>"+money(rs.getBigDecimal(4))+"</td><td>"+money(rs.getBigDecimal(5))+"</td><td>"+money(rs.getBigDecimal(6))+"</td><td class='"+("PASSED".equalsIgnoreCase(status)?"txpass":"txfail")+"'>"+esc(status)+"</td><td>"+rs.getTimestamp(8)+"</td><td>"+rs.getTimestamp(9)+"</td></tr>");
+            }
+        }catch(Exception e){out.println("<tr><td colspan='9'>DB ERROR: "+esc(e.getMessage())+"</td></tr>");}
+        out.println("</table></div></div>");
+
+        out.println("<div class='section'><h2>Persistent Session History</h2><div class='note'>Click Session ID for the complete ASH timeline. Click the worker/TID to inspect that live thread if it still exists.</div><div class='tablewrap'><table><tr><th>Session ID</th><th>User</th><th>Lifecycle</th><th>Live Health</th><th>Requests</th><th>Created</th><th>Last Seen</th><th>Ended</th><th>Last Endpoint</th><th>HTTP</th><th>Tomcat Worker</th><th>JVM TID</th><th>Postgres PID</th></tr>");
+        try(Connection c=Db.getConnection();PreparedStatement ps=c.prepareStatement("""
+            SELECT s.session_id,s.username,s.status,s.request_count,s.created_at,s.last_seen_at,s.ended_at,s.last_uri,s.last_http_status,s.last_thread,s.last_db_backend_pid,
+              (SELECT r.jvm_thread_id FROM app_request_history r WHERE r.session_id=s.session_id ORDER BY r.request_time DESC LIMIT 1)
+            FROM app_sessions s ORDER BY s.created_at DESC LIMIT 50
+            """);ResultSet rs=ps.executeQuery()){
+            while(rs.next()){
+                String sid=rs.getString(1), life=rs.getString(3), health=liveHealth(life,rs.getTimestamp(6)), thread=rs.getString(10);
+                Long tid=rs.getObject(12)==null?null:rs.getLong(12);
+                String surl=ctx+"/session-history?id="+URLEncoder.encode(sid,StandardCharsets.UTF_8);
+                String turl=null;
+                if(tid!=null&&thread!=null)turl=ctx+"/thread-inspect?id="+tid+"&name="+URLEncoder.encode(thread,StandardCharsets.UTF_8);
+                String tc=turl==null?esc(thread):"<a href='"+turl+"'><code>"+esc(thread)+"</code></a>";
+                String ti=turl==null?(tid==null?"—":Long.toString(tid)):"<a href='"+turl+"'>"+tid+"</a>";
+                out.println("<tr><td><a href='"+surl+"'><code>"+esc(sid)+"</code></a></td><td>"+esc(rs.getString(2))+"</td><td><span class='badge "+lc(life)+"'>"+esc(life)+"</span></td><td><span class='badge "+hc(health)+"'>"+health+"</span></td><td>"+rs.getLong(4)+"</td><td>"+rs.getTimestamp(5)+"</td><td>"+rs.getTimestamp(6)+"</td><td>"+rs.getTimestamp(7)+"</td><td><code>"+esc(rs.getString(8))+"</code></td><td>"+rs.getObject(9)+"</td><td>"+tc+"</td><td>"+ti+"</td><td>"+rs.getObject(11)+"</td></tr>");
+            }
+        }catch(Exception e){out.println("<tr><td colspan='13'>DB ERROR: "+esc(e.getMessage())+"</td></tr>");}
+        out.println("</table></div></div>");
+
+        out.println("<div class='section'><h2>Recent HTTP Request Trace</h2><div class='note'>Request-level evidence. Worker and JVM TID are clickable.</div><div class='tablewrap'><table><tr><th>Time</th><th>Request ID</th><th>Session</th><th>User</th><th>Method</th><th>Endpoint</th><th>HTTP</th><th>ms</th><th>Tomcat Worker</th><th>JVM TID</th><th>Client</th><th>Postgres PID</th></tr>");
+        try(Connection c=Db.getConnection();PreparedStatement ps=c.prepareStatement("""
+            SELECT request_time,request_id,session_id,username,method,uri,http_status,duration_ms,thread_name,jvm_thread_id,remote_addr,db_backend_pid
+            FROM app_request_history ORDER BY id DESC LIMIT 100
+            """);ResultSet rs=ps.executeQuery()){
+            while(rs.next()){
+                String sid=rs.getString(3),thread=rs.getString(9);Long tid=rs.getObject(10)==null?null:rs.getLong(10);
+                String sc="—";if(sid!=null&&!sid.isBlank()){String u=ctx+"/session-history?id="+URLEncoder.encode(sid,StandardCharsets.UTF_8);sc="<a href='"+u+"'><code>"+esc(sid)+"</code></a>";}
+                String tc=esc(thread),ti=tid==null?"—":Long.toString(tid);
+                if(tid!=null&&thread!=null){String u=ctx+"/thread-inspect?id="+tid+"&name="+URLEncoder.encode(thread,StandardCharsets.UTF_8);tc="<a href='"+u+"'><code>"+esc(thread)+"</code></a>";ti="<a href='"+u+"'>"+tid+"</a>";}
+                out.println("<tr><td>"+rs.getTimestamp(1)+"</td><td><code>"+esc(rs.getString(2))+"</code></td><td>"+sc+"</td><td>"+esc(rs.getString(4))+"</td><td>"+esc(rs.getString(5))+"</td><td><code>"+esc(rs.getString(6))+"</code></td><td>"+rs.getObject(7)+"</td><td>"+rs.getObject(8)+"</td><td>"+tc+"</td><td>"+ti+"</td><td>"+esc(rs.getString(11))+"</td><td>"+rs.getObject(12)+"</td></tr>");
+            }
+        }catch(Exception e){out.println("<tr><td colspan='12'>DB ERROR: "+esc(e.getMessage())+"</td></tr>");}
+        out.println("</table></div><div class='help'><b>Key concept:</b> JSESSIONID is logical user continuity. Tomcat worker threads and PostgreSQL backend PIDs are execution resources that can change from request to request.</div></div>");
+
+        out.println("</div></body></html>");
+    }
+}

@@ -1,0 +1,524 @@
+package com.manny.orders;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
+import redis.clients.jedis.Jedis;
+
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.ConnectionFactory;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.lang.management.ManagementFactory;
+import java.sql.*;
+
+@WebServlet("/observability")
+public class ObservabilityServlet extends HttpServlet {
+
+    private String esc(String value) {
+        if (value == null) return "";
+        return value
+            .replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;");
+    }
+
+    @Override
+    protected void doGet(
+            HttpServletRequest req,
+            HttpServletResponse resp) throws IOException {
+
+        resp.setContentType("text/html;charset=UTF-8");
+
+        PrintWriter out = resp.getWriter();
+
+        out.println("""
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <title>Orders Functional Observability</title>
+        <meta http-equiv="refresh" content="10">
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:#f8fafc;
+            margin:24px;
+            color:#0f172a;
+        }
+        h1 { margin-bottom:4px; }
+        .sub { color:#64748b; margin-bottom:24px; }
+        .cards {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+            gap:14px;
+            margin-bottom:26px;
+        }
+        .card {
+            background:white;
+            padding:18px;
+            border-radius:12px;
+            box-shadow:0 1px 4px #cbd5e1;
+        }
+        .up { color:#15803d; font-weight:bold; }
+        .down { color:#b91c1c; font-weight:bold; }
+        table {
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+            margin-bottom:28px;
+            font-size:13px;
+        }
+        th,td {
+            padding:8px;
+            border-bottom:1px solid #e2e8f0;
+            text-align:left;
+        }
+        th { background:#e2e8f0; }
+        code { font-size:12px; }
+        
+/* OBS_PRESENTATION_V5 */
+body{background:radial-gradient(circle at 12% 8%,rgba(12,74,110,.55),transparent 28%),radial-gradient(circle at 88% 12%,rgba(91,33,182,.45),transparent 30%),linear-gradient(135deg,#020617,#071426 48%,#020617)!important;background-attachment:fixed!important;color:#e5eefb!important}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(56,189,248,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.035) 1px,transparent 1px);background-size:42px 42px}
+h1,h2,h3{color:#f8fafc!important}th{background:rgba(15,23,42,.96)!important;color:#7dd3fc!important;text-transform:uppercase;letter-spacing:.08em}td{color:#cbd5e1!important}code{color:#93c5fd!important}
+.card,.panel,.metric,.metric-card,.table-card{background:linear-gradient(145deg,rgba(15,23,42,.92),rgba(2,6,23,.94))!important;border:1px solid rgba(125,211,252,.14)!important;box-shadow:0 20px 55px rgba(0,0,0,.28)!important;color:#e5eefb!important}
+.obsnav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;margin:0 0 18px;border-radius:16px;background:rgba(2,6,23,.78);border:1px solid rgba(125,211,252,.15)}
+.obsbrand{font-weight:950;letter-spacing:.11em;color:#e0f2fe}.obsdot{display:inline-block;width:9px;height:9px;margin-right:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 18px #22c55e}
+.obslinks a{display:inline-block;margin-left:7px;padding:8px 12px;border-radius:9px;text-decoration:none;color:#dbeafe;background:rgba(15,23,42,.82);border:1px solid rgba(148,163,184,.16);font-size:11px;font-weight:900}
+.obshero{position:relative;overflow:hidden;padding:38px;margin-bottom:22px;border-radius:28px;border:1px solid rgba(56,189,248,.20);background:linear-gradient(110deg,rgba(2,6,23,.97),rgba(8,47,73,.82),rgba(30,27,75,.82));box-shadow:0 30px 80px rgba(0,0,0,.38)}
+.obskicker{color:#7dd3fc;font-size:11px;font-weight:950;letter-spacing:.23em}.obstitle{margin:10px 0;font-size:clamp(36px,5vw,70px);line-height:.94;font-weight:950;letter-spacing:-.045em;background:linear-gradient(90deg,#fff,#7dd3fc,#c4b5fd);-webkit-background-clip:text;color:transparent}.obscopy{max-width:900px;color:#b8c9df;line-height:1.7}
+.obspills{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.obspill{padding:8px 12px;border-radius:999px;background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.20);font-size:11px;font-weight:850}
+.obsguide{margin:20px 0;padding:16px 19px;border-radius:16px;background:rgba(2,6,23,.72);border:1px solid rgba(125,211,252,.14);color:#94a3b8;font-size:12px;line-height:1.8}.green{color:#86efac}.amber{color:#fcd34d}.purple{color:#c4b5fd}
+
+</style>
+        </head>
+        <body>
+<div class="obsnav"><div class="obsbrand"><span class="obsdot"></span>ORDERS TELEMETRY</div><div class="obslinks"><a href="orders">ORDERS</a><a href="observability">OBSERVABILITY</a><a href="app-metrics">RAW METRICS</a></div></div>
+<div class="obshero"><div class="obskicker">APPLICATION PERFORMANCE - BUSINESS TELEMETRY</div><div class="obstitle">APPLICATION<br>OBSERVABILITY</div><div class="obscopy">End-to-end operational evidence across HTTP, Tomcat workers, JVM execution, application sessions, JDBC, PostgreSQL, Redis, RabbitMQ and Stripe payment processing.</div><div class="obspills"><span class="obspill"><span class="obsdot"></span>LIVE TELEMETRY</span><span class="obspill">PERSISTENT SESSION HISTORY</span><span class="obspill">BUSINESS TRANSACTION CORRELATION</span></div></div>
+<div class="obsguide"><b>SESSION HEALTH:</b> <span class="green">ACTIVE + RECENT = HEALTHY</span> | <span class="amber">ACTIVE + STALE TELEMETRY = STALE</span> | DESTROYED = ENDED | <span class="purple">ABANDONED_ON_RESTART = RESTART TERMINATED</span></div>
+
+        <h1>Orders Functional Observability</h1>
+        <div class="sub">
+        Persistent evidence from HTTP → Tomcat → Session → JDBC → PostgreSQL
+        plus Redis, RabbitMQ and JVM state. Refreshes every 10 seconds.
+        </div>
+        """);
+
+        int dbUp = 0;
+        int backendPid = 0;
+        long sessions = 0;
+        long requests = 0;
+
+        try (Connection conn = Db.getConnection()) {
+
+            dbUp = 1;
+
+            try (Statement st = conn.createStatement();
+                 ResultSet rs =
+                    st.executeQuery(
+                        """
+                        SELECT
+                          pg_backend_pid(),
+                          (SELECT COUNT(*)
+                             FROM app_sessions
+                             WHERE status='ACTIVE'
+                              AND last_seen_at > CURRENT_TIMESTAMP - INTERVAL '2 minutes'),
+                          (SELECT COUNT(*)
+                             FROM app_request_history)
+                        """)) {
+
+                rs.next();
+                backendPid = rs.getInt(1);
+                sessions = rs.getLong(2);
+                requests = rs.getLong(3);
+            }
+
+        } catch (Exception ignored) {}
+
+        int redisUp = 0;
+        long redisKeys = 0;
+
+        try (Jedis jedis = new Jedis("localhost",6379)) {
+            redisUp =
+                "PONG".equalsIgnoreCase(jedis.ping()) ? 1 : 0;
+            redisKeys = jedis.dbSize();
+        } catch (Exception ignored) {}
+
+        int rabbitUp = 0;
+        long rabbitReady = 0;
+        long rabbitConsumers = 0;
+
+        try {
+            ConnectionFactory f = new ConnectionFactory();
+            f.setHost("localhost");
+            f.setUsername("guest");
+            f.setPassword("guest");
+
+            try (com.rabbitmq.client.Connection c =
+                     f.newConnection();
+                 Channel ch = c.createChannel()) {
+
+                AMQP.Queue.DeclareOk q =
+                    ch.queueDeclarePassive("orders.events");
+
+                rabbitReady = q.getMessageCount();
+                rabbitConsumers = q.getConsumerCount();
+                rabbitUp = 1;
+            }
+        } catch (Exception ignored) {}
+
+        int threads =
+            ManagementFactory.getThreadMXBean()
+                .getThreadCount();
+
+        out.println("<div class='cards'>");
+
+        card(out,"PostgreSQL",
+             dbUp == 1 ? "UP · backend PID " + backendPid : "DOWN",
+             dbUp == 1);
+
+        card(out,"Redis",
+             redisUp == 1 ? "UP · keys " + redisKeys : "DOWN",
+             redisUp == 1);
+
+        card(out,"RabbitMQ",
+             rabbitUp == 1
+               ? "UP · ready " + rabbitReady +
+                 " · consumers " + rabbitConsumers
+               : "DOWN",
+             rabbitUp == 1);
+
+        card(out,"Active Sessions",
+             Long.toString(sessions), true);
+
+        card(out,"Recorded Requests",
+             Long.toString(requests), true);
+
+        card(out,"JVM Threads",
+             Integer.toString(threads), true);
+
+        out.println("</div>");
+
+
+        out.println("<h2>Recent Business Transactions</h2>");
+
+        out.println("""
+        <table>
+        <tr>
+          <th>Correlation / Transaction ID</th>
+          <th>User</th>
+          <th>HTTP Session</th>
+          <th>Expected</th>
+          <th>Stripe</th>
+          <th>Database</th>
+          <th>Status</th>
+          <th>Started</th>
+          <th>Completed</th>
+        </tr>
+        """);
+
+        try (Connection conn = Db.getConnection();
+             PreparedStatement ps =
+                 conn.prepareStatement(
+                     """
+                     SELECT
+                       correlation_id,
+                       username,
+                       http_session_id,
+                       expected_amount,
+                       stripe_amount,
+                       database_amount,
+                       status,
+                       started_at,
+                       completed_at
+                     FROM app_transactions
+                     ORDER BY started_at DESC
+                     LIMIT 50
+                     """);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+
+                String tx =
+                    rs.getString(1);
+
+                String txUrl =
+                    "transaction-trace?id=" +
+                    java.net.URLEncoder.encode(
+                        tx,
+                        java.nio.charset.StandardCharsets.UTF_8
+                    );
+
+                java.math.BigDecimal expected =
+                    rs.getBigDecimal(4);
+
+                java.math.BigDecimal stripe =
+                    rs.getBigDecimal(5);
+
+                java.math.BigDecimal database =
+                    rs.getBigDecimal(6);
+
+                String txStatus =
+                    rs.getString(7);
+
+                out.println("<tr>");
+
+                out.println(
+                    "<td><a href='" +
+                    txUrl +
+                    "'><code>" +
+                    esc(tx) +
+                    "</code></a></td>");
+
+                out.println(
+                    "<td>" +
+                    esc(rs.getString(2)) +
+                    "</td>");
+
+                out.println(
+                    "<td><code>" +
+                    esc(rs.getString(3)) +
+                    "</code></td>");
+
+                out.println(
+                    "<td>" +
+                    (expected == null
+                        ? ""
+                        : "$" + expected.toPlainString()) +
+                    "</td>");
+
+                out.println(
+                    "<td>" +
+                    (stripe == null
+                        ? ""
+                        : "$" + stripe.toPlainString()) +
+                    "</td>");
+
+                out.println(
+                    "<td>" +
+                    (database == null
+                        ? ""
+                        : "$" + database.toPlainString()) +
+                    "</td>");
+
+                out.println(
+                    "<td class='" +
+                    ("PASSED".equalsIgnoreCase(txStatus)
+                        ? "up"
+                        : "down") +
+                    "'>" +
+                    esc(txStatus) +
+                    "</td>");
+
+                out.println(
+                    "<td>" +
+                    rs.getTimestamp(8) +
+                    "</td>");
+
+                out.println(
+                    "<td>" +
+                    rs.getTimestamp(9) +
+                    "</td>");
+
+                out.println("</tr>");
+            }
+
+        } catch (Exception e) {
+
+            out.println(
+                "<tr><td colspan='9'>DB ERROR: " +
+                esc(e.getMessage()) +
+                "</td></tr>");
+        }
+
+        out.println("</table>");
+
+        out.println("<h2>Persistent Session History</h2>");
+        out.println("""
+        <table>
+        <tr>
+        <th>Session</th>
+        <th>User</th>
+        <th>Created</th>
+        <th>Last Seen</th>
+        <th>Ended</th>
+        <th>Status</th>
+        <th>Requests</th>
+        <th>Last Endpoint</th>
+        <th>HTTP</th>
+        <th>Tomcat Thread</th>
+        <th>Postgres PID</th>
+        </tr>
+        """);
+
+        try (Connection conn = Db.getConnection();
+             PreparedStatement ps =
+                 conn.prepareStatement(
+                     """
+                     SELECT
+                       session_id,
+                       username,
+                       created_at,
+                       last_seen_at,
+                       ended_at,
+                       status,
+                       request_count,
+                       last_uri,
+                       last_http_status,
+                       last_thread,
+                       last_db_backend_pid
+                     FROM app_sessions
+                     ORDER BY created_at DESC
+                     LIMIT 50
+                     """);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+
+                String sid = rs.getString(1);
+
+                String sessionUrl =
+                    "session-history?id=" +
+                    java.net.URLEncoder.encode(
+                        sid,
+                        java.nio.charset.StandardCharsets.UTF_8
+                    );
+
+                out.println("<tr>");
+
+                out.println(
+                    "<td><a href='" +
+                    sessionUrl +
+                    "'><code>" +
+                    esc(sid) +
+                    "</code></a></td>"
+                );
+                out.println("<td>" + esc(rs.getString(2)) + "</td>");
+                out.println("<td>" + rs.getTimestamp(3) + "</td>");
+                out.println("<td>" + rs.getTimestamp(4) + "</td>");
+                out.println("<td>" + rs.getTimestamp(5) + "</td>");
+                out.println("<td>" + esc(rs.getString(6)) + "</td>");
+                out.println("<td>" + rs.getLong(7) + "</td>");
+                out.println("<td><code>" + esc(rs.getString(8)) + "</code></td>");
+                out.println("<td>" + rs.getInt(9) + "</td>");
+                out.println("<td><code>" + esc(rs.getString(10)) + "</code></td>");
+                out.println("<td>" + rs.getInt(11) + "</td>");
+                out.println("</tr>");
+            }
+
+        } catch (Exception e) {
+            out.println(
+                "<tr><td colspan='11'>DB ERROR: " +
+                esc(e.getMessage()) +
+                "</td></tr>");
+        }
+
+        out.println("</table>");
+
+        out.println("<h2>Recent HTTP Request Trace</h2>");
+        out.println("""
+        <table>
+        <tr>
+        <th>Time</th>
+        <th>Request ID</th>
+        <th>Session</th>
+        <th>User</th>
+        <th>Method</th>
+        <th>Endpoint</th>
+        <th>Status</th>
+        <th>ms</th>
+        <th>Tomcat Thread</th>
+        <th>Client</th>
+        <th>Postgres PID</th>
+        </tr>
+        """);
+
+        try (Connection conn = Db.getConnection();
+             PreparedStatement ps =
+                 conn.prepareStatement(
+                     """
+                     SELECT
+                       request_time,
+                       request_id,
+                       session_id,
+                       username,
+                       method,
+                       uri,
+                       http_status,
+                       duration_ms,
+                       thread_name,
+                       remote_addr,
+                       db_backend_pid
+                     FROM app_request_history
+                     ORDER BY id DESC
+                     LIMIT 100
+                     """);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+
+                String sid = rs.getString(3);
+
+                if (sid != null && sid.length() > 12) {
+                    sid = sid.substring(0,12) + "...";
+                }
+
+                String rid = rs.getString(2);
+
+                if (rid != null && rid.length() > 8) {
+                    rid = rid.substring(0,8);
+                }
+
+                out.println("<tr>");
+                out.println("<td>" + rs.getTimestamp(1) + "</td>");
+                out.println("<td><code>" + esc(rid) + "</code></td>");
+                out.println("<td><code>" + esc(sid) + "</code></td>");
+                out.println("<td>" + esc(rs.getString(4)) + "</td>");
+                out.println("<td>" + esc(rs.getString(5)) + "</td>");
+                out.println("<td><code>" + esc(rs.getString(6)) + "</code></td>");
+                out.println("<td>" + rs.getInt(7) + "</td>");
+                out.println("<td>" + rs.getLong(8) + "</td>");
+                out.println("<td><code>" + esc(rs.getString(9)) + "</code></td>");
+                out.println("<td>" + esc(rs.getString(10)) + "</td>");
+                out.println("<td>" + rs.getInt(11) + "</td>");
+                out.println("</tr>");
+            }
+
+        } catch (Exception e) {
+            out.println(
+                "<tr><td colspan='11'>DB ERROR: " +
+                esc(e.getMessage()) +
+                "</td></tr>");
+        }
+
+        out.println("</table>");
+
+        out.println("""
+        <p>
+        <b>Interpretation:</b>
+        A request row containing a Tomcat thread and PostgreSQL backend PID
+        proves that HTTP reached the WAR, executed on a JVM request thread,
+        obtained a JDBC connection, reached PostgreSQL, and persisted the
+        observability record.
+        </p>
+        </body></html>
+        """);
+    }
+
+    private void card(
+            PrintWriter out,
+            String title,
+            String value,
+            boolean up) {
+
+        out.println(
+            "<div class='card'><h3>" +
+            title +
+            "</h3><div class='" +
+            (up ? "up" : "down") +
+            "'>" +
+            value +
+            "</div></div>");
+    }
+}

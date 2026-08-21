@@ -1,0 +1,147 @@
+package com.manny.orders;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.lang.management.LockInfo;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MonitorInfo;
+import java.lang.management.ThreadInfo;
+import java.lang.management.ThreadMXBean;
+
+@WebServlet("/thread-inspect")
+public class ThreadInspectServlet extends HttpServlet {
+
+    private static String esc(String s) {
+        if (s == null) return "";
+        return s.replace("&","&amp;")
+                .replace("<","&lt;")
+                .replace(">","&gt;")
+                .replace("\"","&quot;");
+    }
+
+    private static String time(long ns) {
+        return ns < 0 ? "Unavailable" : String.format("%.3f ms", ns / 1_000_000.0);
+    }
+
+    private static void card(PrintWriter out, String label, String value) {
+        out.println("<div class='card'><div class='label'>" + esc(label) +
+                "</div><div class='value'>" + esc(value) + "</div></div>");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+
+        resp.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = resp.getWriter();
+
+        long tid;
+        try {
+            tid = Long.parseLong(req.getParameter("id"));
+        } catch (Exception e) {
+            resp.setStatus(400);
+            out.println("Invalid JVM thread ID");
+            return;
+        }
+
+        String expectedName = req.getParameter("name");
+        String ctx = req.getContextPath();
+
+        ThreadMXBean bean = ManagementFactory.getThreadMXBean();
+        ThreadInfo[] arr = bean.getThreadInfo(new long[]{tid}, true, true);
+        ThreadInfo info = (arr == null || arr.length == 0) ? null : arr[0];
+
+        out.println("""
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Live JVM Thread Inspector</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 10%,#0c4a6e55,transparent 30%),linear-gradient(135deg,#020617,#071426 50%,#020617);color:#e5eefb;font-family:Inter,system-ui,sans-serif}
+.shell{width:min(1350px,94%);margin:auto;padding:24px 0 60px}.top{display:flex;justify-content:space-between;margin-bottom:18px}a{color:#7dd3fc;text-decoration:none;font-weight:850}
+.hero,.panel{border:1px solid #7dd3fc26;background:linear-gradient(145deg,#0f172aef,#020617f2);border-radius:20px;box-shadow:0 22px 60px #0007}.hero{padding:28px;margin-bottom:18px}.panel{padding:20px;margin-bottom:18px}
+.kicker{color:#67e8f9;font-size:11px;font-weight:900;letter-spacing:.2em}h1{margin:8px 0;font-size:clamp(30px,4vw,55px)}h2{color:#f8fafc}.note{color:#fde68a;background:#78350f24;border:1px solid #f59e0b40;padding:13px 15px;border-radius:12px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:16px}.card{padding:14px;border-radius:12px;background:#06101d;border:1px solid #94a3b824}.label{color:#7890ae;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.value{margin-top:6px;color:#fff;font-weight:850;word-break:break-all}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#010710;color:#cbd5e1;border:1px solid #38bdf826;border-radius:14px;padding:20px;line-height:1.65;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}.bad{color:#fda4af}.muted{color:#94a3b8}
+table{width:100%;border-collapse:collapse;background:#030a15}th,td{padding:10px;border-bottom:1px solid #94a3b81c;text-align:left}th{color:#7dd3fc;background:#0b1628;font-size:10px;text-transform:uppercase}
+</style>
+</head>
+<body><div class="shell"><div class="top">
+""");
+        out.println("<a href='" + ctx + "/observability'>← OBSERVABILITY</a>");
+        out.println("<a href='" + ctx + "/orders'>ORDERS</a>");
+        out.println("</div><div class='hero'><div class='kicker'>SINGLE-THREAD JVM DIAGNOSTICS</div><h1>LIVE THREAD INSPECTOR</h1>");
+        out.println("<div class='note'><b>Important:</b> this is the current stack of one live JVM thread at click time. It is not a full thread dump. For an old request, it is not guaranteed to be the historical request-time stack because Tomcat reuses worker threads.</div>");
+
+        if (info == null) {
+            out.println("<h2 class='bad'>Thread " + tid + " is NOT ACTIVE in the current JVM.</h2>");
+            out.println("<p class='muted'>The JVM thread no longer exists, but its persisted request/session history is still available below.</p></div>");
+            out.println("<div class='panel'><h2>Historical Request Evidence</h2><table><tr><th>Time</th><th>Request ID</th><th>Session</th><th>User</th><th>Method</th><th>Endpoint</th><th>HTTP</th><th>ms</th><th>Worker</th><th>Postgres PID</th></tr>");
+            try (java.sql.Connection c = Db.getConnection(); java.sql.PreparedStatement ps = c.prepareStatement(
+                    "SELECT request_time,request_id,session_id,username,method,uri,http_status,duration_ms,thread_name,db_backend_pid FROM app_request_history WHERE jvm_thread_id=? ORDER BY id DESC LIMIT 100")) {
+                ps.setLong(1, tid);
+                try (java.sql.ResultSet rs = ps.executeQuery()) {
+                    boolean any=false;
+                    while (rs.next()) {
+                        any=true;
+                        String sid=rs.getString(3);
+                        String slink=(sid==null||sid.isBlank())?"—":"<a href='"+ctx+"/session-history?id="+java.net.URLEncoder.encode(sid,java.nio.charset.StandardCharsets.UTF_8)+"'><code>"+esc(sid)+"</code></a>";
+                        out.println("<tr><td>"+rs.getTimestamp(1)+"</td><td><code>"+esc(rs.getString(2))+"</code></td><td>"+slink+"</td><td>"+esc(rs.getString(4))+"</td><td>"+esc(rs.getString(5))+"</td><td><code>"+esc(rs.getString(6))+"</code></td><td>"+rs.getObject(7)+"</td><td>"+rs.getObject(8)+"</td><td><code>"+esc(rs.getString(9))+"</code></td><td>"+rs.getObject(10)+"</td></tr>");
+                    }
+                    if(!any) out.println("<tr><td colspan='10'>No persisted request rows found for this JVM thread ID.</td></tr>");
+                }
+            } catch(Exception e) { out.println("<tr><td colspan='10'>DB ERROR: "+esc(e.getMessage())+"</td></tr>"); }
+            out.println("</table></div></div></body></html>");
+            return;
+        }
+
+        boolean nameMatch = expectedName == null || expectedName.isBlank()
+                || expectedName.equals(info.getThreadName());
+
+        long cpu = bean.isThreadCpuTimeSupported() && bean.isThreadCpuTimeEnabled()
+                ? bean.getThreadCpuTime(tid) : -1;
+        long user = bean.isThreadCpuTimeSupported() && bean.isThreadCpuTimeEnabled()
+                ? bean.getThreadUserTime(tid) : -1;
+
+        out.println("<div class='grid'>");
+        card(out,"Thread Activity","ACTIVE — CURRENT JVM");
+        card(out,"JVM Thread ID",Long.toString(tid));
+        card(out,"Current Thread Name",info.getThreadName());
+        card(out,"Historical Expected Name",expectedName == null ? "Not supplied" : expectedName);
+        card(out,"Name Match",nameMatch ? "YES" : "NO — do not treat as same historical worker");
+        card(out,"Current State",info.getThreadState().name());
+        card(out,"CPU Time",time(cpu));
+        card(out,"User CPU Time",time(user));
+        card(out,"Blocked Count",Long.toString(info.getBlockedCount()));
+        card(out,"Waited Count",Long.toString(info.getWaitedCount()));
+        card(out,"Current Lock",info.getLockName() == null ? "None" : info.getLockName());
+        card(out,"Lock Owner",info.getLockOwnerName() == null ? "None" : info.getLockOwnerName());
+        out.println("</div></div>");
+
+        out.println("<div class='panel'><h2>Current Java Stack</h2><pre>");
+        out.println("\"" + esc(info.getThreadName()) + "\" tid=" + tid + " state=" + info.getThreadState());
+        for (StackTraceElement f : info.getStackTrace()) {
+            out.println("    at " + esc(f.toString()));
+        }
+        if (info.getStackTrace().length == 0) out.println("    <no Java stack frames available>");
+        out.println("</pre></div>");
+
+        out.println("<div class='panel'><h2>Owned Locks / Synchronizers</h2><table><tr><th>Type</th><th>Lock</th><th>Location</th></tr>");
+        for (MonitorInfo m : info.getLockedMonitors()) {
+            out.println("<tr><td>Monitor</td><td>" + esc(m.toString()) + "</td><td>" + esc(String.valueOf(m.getLockedStackFrame())) + "</td></tr>");
+        }
+        for (LockInfo l : info.getLockedSynchronizers()) {
+            out.println("<tr><td>Synchronizer</td><td>" + esc(l.toString()) + "</td><td>—</td></tr>");
+        }
+        if (info.getLockedMonitors().length == 0 && info.getLockedSynchronizers().length == 0) {
+            out.println("<tr><td colspan='3'>No owned monitors or synchronizers reported.</td></tr>");
+        }
+        out.println("</table></div></div></body></html>");
+    }
+}

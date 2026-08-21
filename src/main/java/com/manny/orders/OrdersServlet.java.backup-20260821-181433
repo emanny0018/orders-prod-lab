@@ -69,11 +69,7 @@ public class OrdersServlet extends HttpServlet {
                     "Create customer purchases, track payment state, and publish fulfillment events.",
                     user);
 
-            
-            // OBS_NAV_V5
-            String observabilityContext = req.getContextPath();
-            out.println("<div style='display:flex;justify-content:flex-end;margin-bottom:18px'><a href='" + observabilityContext + "/observability' style='padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,#0f172a,#075985);color:white;text-decoration:none;font-weight:900;letter-spacing:.07em;box-shadow:0 12px 30px rgba(2,132,199,.20)'>&#128225; OBSERVABILITY</a></div>");
-out.println("<div class='card-row'>");
+            out.println("<div class='card-row'>");
             out.println("<div class='card'><h3>Total Orders</h3><div class='value'>" + dash.totalOrders + "</div></div>");
             out.println("<div class='card'><h3>Paid Orders</h3><div class='value'>" + dash.paidOrders + "</div></div>");
             out.println("<div class='card'><h3>Pending Orders</h3><div class='value'>" + dash.pendingOrders + "</div></div>");
